@@ -1,3 +1,11 @@
 {
-  "projects": {}
+  "projects": {
+    "app": {
+      "name": "app",
+      "integrations": {},
+      "type": "angular",
+      "root": "projects/app"
+    }
+  },
+  "defaultProject": "app"
 }
