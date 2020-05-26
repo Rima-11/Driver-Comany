@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "cfd-lib-driver": [
+        "dist/cfd-lib-driver/cfd-lib-driver",
+        "dist/cfd-lib-driver"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
