@@ -7,6 +7,14 @@
       },
       "type": "angular",
       "root": "projects/app"
+    },
+    "app-pro": {
+      "name": "app-pro",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular",
+      "root": "projects/app-pro"
     }
   }
 }
