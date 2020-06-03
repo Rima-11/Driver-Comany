@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Settings',
-      url: '/folder/settings',
+      url: '/settings',
       icon: 'settings'
     },
     {
