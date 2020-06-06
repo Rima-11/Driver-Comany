@@ -11,3 +11,56 @@ ion-buttons {
     text-align: center;
     margin-left: -15%
 }
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+#ion-card-edit {
+    margin: 20% 0% 0% 0%;
+    height: 80px;
+}
+
+#ion-card-security {
+    text-align: center;
+    margin: 10% auto;
+    height: 80px;
+}
+
+#ion-card-logout {
+    margin: 0% auto;
+    height: 80px;
+    text-align: center;
+}
+
+p {
+    margin: 0px;
+    color: #382574;
+    font-weight: bold;
+}
+
+#ion-card-logout p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+    color: red;
+}
+
+ion-fab-button {
+    --background: #382574;
+}
+
+#ion-card-edit ion-grid {
+    margin-top: 5px;
+}
+
+#ion-card-security ion-grid {
+    margin-top: 15px;
+}
+
+#ion-card-logout ion-grid {
+    margin-top: 30px;
+}

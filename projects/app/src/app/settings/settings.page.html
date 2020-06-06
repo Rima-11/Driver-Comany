@@ -11,26 +11,64 @@
 </ion-header>
 
 
-<ion-content>
-    <ion-card>
 
 
-        <ion-icon name="person"></ion-icon>
+<ion-content fullscreen no-border>
 
+
+
+    <ion-card id="ion-card-edit">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="2" class="center">
+                    <ion-fab-button style="width: 30px;height: 30px;">
+                        <ion-icon name="person"></ion-icon>
+                    </ion-fab-button>
+
+                </ion-col>
+                <ion-col size="8" class="center">
+                    <p style="text-align: right;">Hamza BADROUCHI</p>
+                    <p style="text-align: right;">+216 24613249</p>
+                    <p style="text-align: right;">hamza-badrouchi@live.fr</p>
+                </ion-col>
+                <ion-col size="2" class="center">
+                    <ion-fab-button style="width: 30px;height: 30px;">
+                        <i class="icon fa fa-chevron-right" style="float:right;"></i>
+                    </ion-fab-button>
+
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+
+    <ion-card id="ion-card-security">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="2" class="center">
+                    <ion-fab-button style="width: 30px;height: 30px;">
+                        <i class="fas fa-lock"></i>
+                    </ion-fab-button>
+
+                </ion-col>
+                <ion-col size="8" class="center">
+
+                    <p style="text-align: right;">Security</p>
+
+                </ion-col>
+                <ion-col size="2" class="center">
+                    <ion-fab-button style="width: 30px;height: 30px;">
+                        <i class="icon fa fa-chevron-right" style="float:right;"></i>
+                    </ion-fab-button>
+
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+    <ion-card id="ion-card-logout">
+
+
+        <p style="text-align: center;"><i class="fas fa-sign-out-alt"></i> Logout</p>
 
 
     </ion-card>
-
-    <ion-card>
-
-
-        <ion-card-content>
-            <button ion-item>
-                <ion-icon item-left color="danger" name="log-out"></ion-icon>
-                   Logout
-                </button>
-        </ion-card-content>
-    </ion-card>
-
-
 </ion-content>
