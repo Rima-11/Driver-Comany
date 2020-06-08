@@ -15,7 +15,6 @@ ion-title{
 ion-avatar{
 margin: auto;
 margin-top: 10px;
-opacity: 0.5;
 }
 a{
     color:#382574;
@@ -28,6 +27,7 @@ ion-list{
 ion-button{
 --background:#382574;
 margin-top: 50px;
+width:255px;
 }
 div{
     text-align: center;
