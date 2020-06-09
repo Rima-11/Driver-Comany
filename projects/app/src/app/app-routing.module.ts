@@ -24,3 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./password/password.module').then( m => m.PasswordPageModule)
   }
 ];
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}
