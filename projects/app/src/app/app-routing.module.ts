@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'password',
     loadChildren: () => import('./password/password.module').then( m => m.PasswordPageModule)
+  },  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   }
+
 ];
 @NgModule({
   imports: [
