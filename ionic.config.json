@@ -3,7 +3,8 @@
     "app": {
       "name": "app",
       "integrations": {
-        "capacitor": {}
+        "capacitor": {},
+        "cordova": {}
       },
       "type": "angular",
       "root": "projects/app"

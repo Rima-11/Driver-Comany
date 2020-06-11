@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
       icon: 'exit'
     }
   ];
-  
+
 
   constructor(
     private platform: Platform,
