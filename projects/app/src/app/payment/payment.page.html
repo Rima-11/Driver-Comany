@@ -1,9 +1,89 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>payment</ion-title>
-  </ion-toolbar>
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title text-center>
+            <h1 class="centered-title">
+                <ion-icon name="card"></ion-icon> Payment Method</h1>
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
+<ion-content fullscreen no-border>
+    <form>
+        <ion-card class="mobile-money">
+            <ion-grid>
+                <ion-row>
 
-<ion-content>
+                    <ion-col size="12">
+                        <h2><img src="assets/icon/icon-mobile-money.jpg" alt="icon-mobile-money"> Mobile Money</h2>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <input type="radio" name="awesome-radiobox" id="awesome_radio1" checked />
+                        <label for="awesome_radio1"> Defaul payment</label>
+                    </ion-col>
+
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+        <ion-card>
+            <ion-grid>
+                <ion-row>
+
+                    <ion-col size="12">
+                        <h2><img src="assets/icon/icon-mastercard.png" alt="icon-mobile-money"> Credit Card</h2>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <input type="radio" name="awesome-radiobox" id="awesome_radio2" />
+                        <label for="awesome_radio2"> Defaul payment</label>
+                    </ion-col>
+
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+        <ion-card>
+            <ion-grid>
+                <ion-row>
+
+                    <ion-col size="12">
+                        <h2><img src="assets/icon/icon-paypal.jpg" alt="icon-mobile-money"> PayPal</h2>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <input type="radio" name="awesome-radiobox" id="awesome_radio3" />
+                        <label for="awesome_radio3"> Defaul payment</label>
+                    </ion-col>
+
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+        <ion-card>
+            <ion-grid>
+                <ion-row>
+
+                    <ion-col size="12">
+                        <h2><img src="assets/icon/espece.jpg" alt="icon-mobile-money"> Cash</h2>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <input type="radio" name="awesome-radiobox" id="awesome_radio4" />
+                        <label for="awesome_radio4"> Defaul payment</label>
+                    </ion-col>
+
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+    </form>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 
 </ion-content>
