@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-icon  name="arrow-back"></ion-icon>
+  <ion-title class="ionic-text-center"> <ion-icon name="log-in-outline"></ion-icon> Login</ion-title>
   </ion-toolbar>
-</ion-header>
+  </ion-header>
 
-<ion-content>
+  <ion-content>
+    <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Phone<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="string" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Password<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+     </ion-list>
+       <ion-button  type="submit" expand="block" shape="round" >Login</ion-button>
 
-</ion-content>
+       <ion-text class="ion-text-start"> <ion-icon name="checkbox-outline"></ion-icon> Remember me</ion-text>
+       <ion-text class="ion-text-end" style="text-decoration: underline;" > Forgot password? </ion-text>
+
+  </ion-content>
