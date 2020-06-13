@@ -72,7 +72,7 @@ export class HomePage {
 
 
     addCarPosition() {
-        const icon = this.baseUrl + 'car.svg';
+        const icon = this.baseUrl + 'car.png';
         const latLng = new google.maps.LatLng(4.068998, 9.7318953);
         const marker = new google.maps.Marker({
             map: this.map,
