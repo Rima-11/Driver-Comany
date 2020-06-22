@@ -1,9 +1,144 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>create-account</ion-title>
+    <ion-title class="ion-text-center">
+      <ion-icon name="create"></ion-icon> Sign Up
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-slides #signupSlider pager>
+    <ion-slide>
+      <ion-list>
+        <form [formGroup]="slideOneForm">
+        <ion-item>
+          <ion-label position="floating" style="color:#382574;">Phone</ion-label>
+          <ion-input formControlName="phone" type="tel" [class.invalid]="!slideOneForm.controls.phone.valid && (slideOneForm.controls.phone.dirty || submitAttempt)"></ion-input>
+        </ion-item>
+        <ion-buttons slot="end">
+          <ion-button (click)="next()" style="--background:#382574;" class="arrow-forward next-phone">Next<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+        </ion-buttons>
+        </form>
+      </ion-list>
+    </ion-slide>
+     <ion-slide>
+        <ion-list>
+          <form [formGroup]="slideOneForm">
+          <ion-item>
+            <ion-label position="floating" style="color:#382574;">Code</ion-label>
+            <ion-input formControlName="code" type="text" [class.invalid]="!slideOneForm.controls.code.valid && (slideOneForm.controls.code.dirty || submitAttempt)"></ion-input>
+          </ion-item>
+          <ion-buttons>
+            <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
+            <ion-button (click)="next()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+          </ion-buttons>
+          </form>
+        </ion-list>
+    </ion-slide>
+    <ion-slide>
+      <ion-list>
+        <form [formGroup]="slideOneForm">
+          <ion-radio-group value="Client" formControlName="accountType">
+            <ion-list-header>
+              <ion-label style="color:#382574; font-weight: bold; font-size: 20px;" class="ion-text-left">Create account as :</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label>Client</ion-label>
+              <ion-radio slot="start" color="success" value="Client"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Driver</ion-label>
+              <ion-radio slot="start" color="tertiary" value="Driver"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+          <ion-buttons>
+            <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
+            <ion-button (click)="next()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+          </ion-buttons>
+          </form>
+      </ion-list>
+    </ion-slide>
+    <ion-slide> 
+      <ion-list>
+          <form [formGroup]="slideOneForm">
+            <ion-item>
+              <ion-label position="floating" style="color:#382574;">Email</ion-label>
+              <ion-input formControlName="email" type="email" [class.invalid]="!slideOneForm.controls.email.valid && (slideOneForm.controls.email.dirty || submitAttempt)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
+              <p>Please enter a valid email</p>
+          </ion-item>
+              <ion-item>
+                <ion-label position="floating" style="color:#382574;">First Name</ion-label>
+                  <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">
+                  <p>Please enter a valid name.</p>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating" style="color:#382574;">Last Name</ion-label>
+                  <ion-input formControlName="lastName" type="text" [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.email.dirty || submitAttempt)"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
+                  <p>Please enter a valid name.</p>
+              </ion-item>
+              <ion-buttons>
+                <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
+                <ion-button (click)="next()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+              </ion-buttons>
+          </form>
+      </ion-list>
+    </ion-slide>
+     <ion-slide>
+         <ion-list>
+          <form [formGroup]="slideOneForm">
+            <ion-item>
+              <ion-label position="floating" style="color:#382574;">Zip</ion-label>
+              <ion-input formControlName="zip" type="text" [class.invalid]="!slideOneForm.controls.zip.valid && (slideOneForm.controls.zip.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating" style="color:#382574;">Town</ion-label>
+              <ion-input formControlName="town" type="text" [class.invalid]="!slideOneForm.controls.town.valid && (slideOneForm.controls.town.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating" style="color:#382574;">Country</ion-label>
+              <ion-input formControlName="country" type="text" [class.invalid]="!slideOneForm.controls.country.valid && (slideOneForm.controls.country.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <ion-buttons>
+              <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
+              <ion-button (click)="next()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+            </ion-buttons>
+          </form>
+        </ion-list>
+    </ion-slide>
+    <ion-slide>
+      <ion-list>
+          <form [formGroup]="slideOneForm">
+              <ion-item>
+                <ion-label position="floating" style="color:#382574;">New Password</ion-label>
+                  <ion-input [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)" formControlName="password" type="password"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="slideOneForm.controls.password.pending">
+                  <p>Checking password...</p>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating" style="color:#382574;">Confirm Password</ion-label>
+                <ion-input [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)" formControlName="Confirmpassword" type="password"></ion-input>
+              </ion-item>
+              <ion-item no-lines *ngIf="( slideOneForm.get('Confirmpassword').hasError('equalTo') || slideOneForm.get('Confirmpassword').hasError('required') ) && slideOneForm.get('Confirmpassword').touched">
+              
+                <p class="error" *ngIf="slideOneForm.get('Confirmpassword').hasError('equalTo') && slideOneForm.get('Confirmpassword').touched">
+                Confirm Password
+                </p>
+              </ion-item>
+              <ion-item>
+              </ion-item>
+          </form>
+      </ion-list>
+      <ion-buttons slot="start">
+        <ion-button (click)="prev()" (click)="affiche()" style="--background:#382574;" class="arrow-back pass-back"><ion-icon slot="start" name="arrow-back"></ion-icon> Prev</ion-button>
+        <ion-button expand="full" [disabled]="slideOneForm.invalid" class="bouton-create" (click)="save()"> <ion-icon name="create"></ion-icon>Create</ion-button>
+      </ion-buttons>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
