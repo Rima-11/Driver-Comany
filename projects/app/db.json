@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "firstName": "jjj",
+      "lastName": "jjjjj",
+      "email": "jjj@jjjj",
+      "phone": "141414",
+      "accountType": "Client",
+      "code": "11",
+      "zip": "jjjjjjj",
+      "town": "jjjj",
+      "country": "jjjjj",
+      "password": "sa",
+      "Confirmpassword": "sa",
+      "id": 1
+    }
+  ]
+}
