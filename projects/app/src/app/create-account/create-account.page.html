@@ -16,7 +16,7 @@
           <ion-input formControlName="phone" type="tel" [class.invalid]="!slideOneForm.controls.phone.valid && (slideOneForm.controls.phone.dirty || submitAttempt)"></ion-input>
         </ion-item>
         <ion-buttons slot="end">
-          <ion-button (click)="next()" style="--background:#382574;" class="arrow-forward next-phone">Next<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+          <ion-button  (click)="verifyPhone()" style="--background:#382574;" class="arrow-forward next-phone">Next<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
         </ion-buttons>
         </form>
       </ion-list>
@@ -30,7 +30,7 @@
           </ion-item>
           <ion-buttons>
             <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
-            <ion-button (click)="next()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+            <ion-button  disabled="{{verifyCode()}}" (click)="next()" style="--background:#382574;" class="arrow-forward"  (click)="verifyCode()">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
           </ion-buttons>
           </form>
         </ion-list>

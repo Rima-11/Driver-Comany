@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup} from '@angular/forms'
 import {Validators,ValidatorFn, AbstractControl} from '@angular/forms'
 
 
+
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.page.html',
@@ -17,6 +18,10 @@ export class CreateAccountPage implements OnInit {
   slideOneForm: any;
   slides: any;
   store: any;
+  code=123;
+  phoneData={
+    phone:''
+  };
  ngOnInit() {
   
   }
@@ -89,7 +94,35 @@ prev(){
   this.http.post(url,this.slideOneForm.value).toPromise().then((data:any)=>{
     console.log(data);
   }) 
-  console.log(this.slideOneForm.value.phone);
+  //console.log(this.slideOneForm.value.phone);
     }   
+}
+
+//verify phone
+
+verifyPhone()
+{
+  let url="http://localhost:3000/users";
+  this.http.get(url)
+  .subscribe((data) => {
+  for(let i=0;i< Object.keys(data).length; i++ )
+  {
+   var phones=data[i].phone;
+   if (phones==this.slideOneForm.value.phone)
+   {
+    
+   }
+  
+  }
+  //console.log(hamza[0].phone);  
+});
+
+}
+
+//verify code 
+
+verifyCode() {
+  if (this.code==this.slideOneForm.value.code) return false ;
+           return true ;
 }
 }
