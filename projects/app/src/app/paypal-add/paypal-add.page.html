@@ -1,0 +1,22 @@
+<!-- paypal-create.html -->
+<ion-header>
+    <ion-toolbar color="tertiary">
+        <ion-title>Create paypal</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input [(ngModel)]="data.email" placeholder="Enter email"></ion-input>
+    </ion-item>
+
+
+
+    <ion-item>
+        <ion-button (click)="submitForm()">Add
+        </ion-button>
+    </ion-item>
+
+</ion-content>

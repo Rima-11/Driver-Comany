@@ -1,0 +1,35 @@
+{
+  "mobilemoneys": [
+    {
+      "tel": "2254994",
+      "id": 1
+    },
+    {
+      "tel": "225555",
+      "id": 2
+    }
+  ],
+  "Paypals": [
+    {
+      "email": "hamza@live.fr",
+      "id": 1
+    },
+    {
+      "email": "hamza@hamza",
+      "id": 2
+    },
+    {
+      "email": "sab@sab",
+      "id": 3
+    }
+  ],
+  "creditCards": [
+    {
+      "name": "papa hajim",
+      "cardNumber": "0000 0000 0000 0000",
+      "expiry": "02/2023",
+      "cvv": "544",
+      "id": 1
+    }
+  ]
+}

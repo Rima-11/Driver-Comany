@@ -1,0 +1,25 @@
+<!-- student-create.html -->
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/add-payment-method"></ion-back-button>
+        </ion-buttons>
+        <ion-title text-center>
+            <h1 class="centered-title">
+                <ion-icon name="call-outline"></ion-icon> Add Your Phone</h1>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-item>
+        <ion-label>phone</ion-label>
+        <ion-input type="tel" [(ngModel)]="data.tel" placeholder="Enter phone"></ion-input>
+    </ion-item>
+
+
+
+
+    <ion-button (click)="submitForm()">Add
+    </ion-button>
