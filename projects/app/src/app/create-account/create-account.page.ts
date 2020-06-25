@@ -2,9 +2,8 @@ import { Component, OnInit,ViewChild, ViewChildren, QueryList } from '@angular/c
 import {HttpClient} from'@angular/common/http';
 import {IonSlides, NavController} from '@ionic/angular';
 import {FormBuilder, FormGroup} from '@angular/forms'
-import {Validators,ValidatorFn, AbstractControl} from '@angular/forms'
-
-
+import {Validators,ValidatorFn, AbstractControl} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-account',
@@ -12,7 +11,6 @@ import {Validators,ValidatorFn, AbstractControl} from '@angular/forms'
   styleUrls: ['./create-account.page.scss'],
 })
 export class CreateAccountPage implements OnInit {
-
   @ViewChild('signupSlider') signupSlider;
   submitAttempt: boolean;
   slideOneForm: any;
@@ -25,8 +23,7 @@ export class CreateAccountPage implements OnInit {
  ngOnInit() {
   
   }
-  constructor(public nav: NavController,public formBuilder: FormBuilder,private http:HttpClient) {
-
+  constructor(public nav: NavController,public formBuilder: FormBuilder,private http:HttpClient,private router: Router) {
     this.slideOneForm = formBuilder.group({
         firstName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.required])],
         lastName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -34,8 +31,7 @@ export class CreateAccountPage implements OnInit {
           Validators.required,
           Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         ])],
-        phone:['',Validators.compose([
-          Validators.required])],
+        phone:['',Validators.compose([Validators.required])],
         accountType:['',Validators.compose([
           Validators.required])],
         code:['',Validators.compose([
@@ -55,10 +51,8 @@ export class CreateAccountPage implements OnInit {
 //password 
 
 equalto(field_name): ValidatorFn {
-  return (control: AbstractControl): {[key: string]: any} => {
-  
+  return (control: AbstractControl): {[key: string]: any} => { 
   let input = control.value;
-  
   let isValid=control.root.value[field_name]==input
   if(!isValid) 
   return { 'equalTo': {isValid} }
@@ -68,8 +62,6 @@ equalto(field_name): ValidatorFn {
   }
 
 //previous next
-
-
 
 next(){
   this.signupSlider.slideNext();
@@ -83,9 +75,7 @@ prev(){
 
 //create account
   save(){
-
     this.submitAttempt = true;
-
     if(!this.slideOneForm.valid){
         this.signupSlider.slideTo(0);
     }
@@ -93,7 +83,7 @@ prev(){
        let url="http://localhost:3000/users";
   this.http.post(url,this.slideOneForm.value).toPromise().then((data:any)=>{
     console.log(data);
-  }) 
+  });
   //console.log(this.slideOneForm.value.phone);
     }   
 }
@@ -110,13 +100,13 @@ verifyPhone()
    var phones=data[i].phone;
    if (phones==this.slideOneForm.value.phone)
    {
-    
+    this.router.navigate(['/signup'])
    }
-  
+   else {
+    this.signupSlider.slideNext();
+   }   
   }
-  //console.log(hamza[0].phone);  
 });
-
 }
 
 //verify code 
