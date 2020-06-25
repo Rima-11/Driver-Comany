@@ -9,19 +9,14 @@ declare var google: any;
     styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
     map: any;
     baseUrl = 'assets/image.png/';
-
     constructor(public geolocation: Geolocation) {
-
     }
     ngOnInit() {
       this.loadMap();
     }
-
     loadMap() {
-
         this.geolocation.getCurrentPosition().then((resp) => {
             let lat = resp.coords.latitude;
             let lng = resp.coords.longitude;
@@ -32,14 +27,11 @@ export class HomePage {
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 mapTypeControl: false
             });
-
-
             this.addMyPosition(latLng);
             this.addHousePosition();
             this.addCarPosition();
         });
     }
-
     addMyPosition(latLng) {
         const marker = new google.maps.Marker({
             map: this.map,
@@ -49,10 +41,8 @@ export class HomePage {
         });
         this.addInfoWindowToMarker(marker);
     }
-
-
     addHousePosition() {
-        const icon = this.baseUrl + 'home-address.svg';
+        const icon = this.baseUrl + 'home.png';
         const latLng = new google.maps.LatLng(4.068998, 9.7118953);
         const marker = new google.maps.Marker({
             map: this.map,
@@ -69,8 +59,6 @@ export class HomePage {
         });
         this.addInfoWindowToMarker(marker);
     }
-
-
     addCarPosition() {
         const icon = this.baseUrl + 'car.png';
         const latLng = new google.maps.LatLng(4.068998, 9.7318953);
@@ -89,8 +77,6 @@ export class HomePage {
         });
         this.addInfoWindowToMarker(marker);
     }
-
-
     addInfoWindowToMarker(marker) {
         const infoWindowContent = '<div id="content">' + marker.title + '</div>';
         const infoWindow = new google.maps.InfoWindow({
@@ -100,6 +86,5 @@ export class HomePage {
             infoWindow.open(this.map, marker);
         });
     }
-
   }
 
