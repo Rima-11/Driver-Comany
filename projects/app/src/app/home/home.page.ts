@@ -42,7 +42,7 @@ export class HomePage {
         this.addInfoWindowToMarker(marker);
     }
     addHousePosition() {
-        const icon = this.baseUrl + 'home.png';
+        const icon = this.baseUrl + 'home-outline.svg';
         const latLng = new google.maps.LatLng(4.068998, 9.7118953);
         const marker = new google.maps.Marker({
             map: this.map,
@@ -60,7 +60,7 @@ export class HomePage {
         this.addInfoWindowToMarker(marker);
     }
     addCarPosition() {
-        const icon = this.baseUrl + 'car.png';
+        const icon = this.baseUrl + 'car-outline.svg';
         const latLng = new google.maps.LatLng(4.068998, 9.7318953);
         const marker = new google.maps.Marker({
             map: this.map,
