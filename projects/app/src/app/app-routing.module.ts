@@ -19,8 +19,19 @@ const routes: Routes = [
     path: 'edit',
     loadChildren: () => import('./edit/edit.module').then( m => m.EditPageModule)
   },
-];
+  {
+    path: 'password',
+    loadChildren: () => import('./password/password.module').then( m => m.PasswordPageModule)
+  },  {
+    path: 'authentification',
+    loadChildren: () => import('./authentification/authentification.module').then( m => m.AuthentificationPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  }
 
+];
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

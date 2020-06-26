@@ -42,13 +42,6 @@ p {
     font-weight: bold;
 }
 
-#ion-card-logout p {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 30px;
-    color: red;
-}
-
 ion-fab-button {
     --background: #382574;
 }
@@ -59,8 +52,4 @@ ion-fab-button {
 
 #ion-card-security ion-grid {
     margin-top: 15px;
-}
-
-#ion-card-logout ion-grid {
-    margin-top: 30px;
 }

@@ -1,0 +1,33 @@
+ion-header ion-toolbar{
+  --background: var(--ion-item-background, var(--ion-background-color, #382574));
+ margin-bottom:65px;
+
+}
+ion-toolbar ion-icon{
+color: white;
+}
+ion-title {
+color:white;
+font-size: 30px;
+}
+
+ion-item {
+margin-top:50px;
+margin-left:65px;
+margin-right:65px;
+}
+ion-button {
+ margin-top:70px;
+ margin-bottom:25px;
+ margin-left:70px;
+ margin-right:70px;
+--background: #382574;
+}
+.ion-text-start{
+ color:#8F888C;
+ margin-left:10px;
+}
+.ion-text-end{
+  margin-right: 10px;
+}
+
