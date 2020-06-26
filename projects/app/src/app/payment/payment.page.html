@@ -11,29 +11,43 @@
 </ion-header>
 <ion-content fullscreen no-border>
     <form>
-        <ion-card>
+
+        <ion-card class="mobile-money">
+
+
+
             <ion-grid>
                 <ion-row>
 
                     <ion-col size="12">
-                        <h2><img src="assets/icon/espece.jpg" alt="icon-mobile-money"> Cash</h2>
+                        <h2><img src="assets/icon/espece.png" alt="icon-espece"> Cash</h2>
                     </ion-col>
+
+
+
+
+
                 </ion-row>
                 <ion-row>
                     <ion-col size="12">
-                        <input type="radio" name="awesome-radiobox" id="awesome_radio4" />
-                        <label for="awesome_radio4"> Defaul payment</label>
+                        <input type="radio" name="awesome-radiobox" id="cash" checked />
+                        <label for="cash"> Defaul payment</label>
                     </ion-col>
 
                 </ion-row>
             </ion-grid>
         </ion-card>
-        <ion-card class="mobile-money" *ngFor="let item of MobileMoneysData">
+
+
+        <ion-card *ngFor="let item of MobileMoneysData">
+            <ion-fab-button id="close" (click)="deleteMobileMoney(item)">
+                <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
             <ion-grid>
                 <ion-row>
 
                     <ion-col size="12">
-                        <h2><img src="assets/icon/icon-mobile-money.jpg" alt="icon-mobile-money"> {{ item.tel }}</h2>
+                        <h2><img src="assets/icon/icon-mobile-money.png" alt="icon-mobile-money"> {{ item.tel }}</h2>
                     </ion-col>
                 </ion-row>
                 <ion-row>
@@ -46,6 +60,9 @@
             </ion-grid>
         </ion-card>
         <ion-card *ngFor="let item of CreditCardsData">
+            <ion-fab-button id="close" (click)="deleteCreditCard(item)">
+                <ion-icon name="close-circle-outline"></ion-icon>
+            </ion-fab-button>
             <ion-grid>
                 <ion-row>
 
@@ -63,11 +80,14 @@
             </ion-grid>
         </ion-card>
         <ion-card *ngFor="let item of PaypalsData">
+            <ion-fab-button id="close" (click)="delete(item)">
+                <ion-icon name="close-outline"></ion-icon>
+            </ion-fab-button>
             <ion-grid>
                 <ion-row>
 
                     <ion-col size="12">
-                        <h2><img src="assets/icon/icon-paypal.jpg" alt="icon-mobile-money"> {{ item.email }}</h2>
+                        <h2><img src="assets/icon/icon-paypal.png" alt="icon-mobile-money"> {{ item.email }}</h2>
                     </ion-col>
                 </ion-row>
                 <ion-row>

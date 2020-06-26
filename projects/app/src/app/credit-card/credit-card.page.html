@@ -1,7 +1,13 @@
 <!-- student-create.html -->
 <ion-header>
-    <ion-toolbar color="tertiary">
-        <ion-title>Create Student</ion-title>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/add-payment-method"></ion-back-button>
+        </ion-buttons>
+        <ion-title text-center>
+            <h1 class="centered-title">
+                Add Credit Card</h1>
+        </ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -22,13 +28,13 @@
         <ion-input [(ngModel)]="data.expiry" placeholder="expiry"></ion-input>
     </ion-item>
 
-    <ion-item>
-        <ion-item>
-            <ion-label>cvv</ion-label>
-            <ion-input [(ngModel)]="data.cvv" placeholder="cvv"></ion-input>
-        </ion-item>
-        <ion-button (click)="submitForm()">Add
-        </ion-button>
-    </ion-item>
 
+    <ion-item>
+        <ion-label>cvv</ion-label>
+        <ion-input [(ngModel)]="data.cvv" placeholder="cvv"></ion-input>
+    </ion-item>
+    <div>
+        <ion-button (click)="submitForm()">Save
+        </ion-button>
+    </div>
 </ion-content>
