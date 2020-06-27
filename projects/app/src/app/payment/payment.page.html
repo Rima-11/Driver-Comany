@@ -12,90 +12,142 @@
 <ion-content fullscreen no-border>
     <form>
 
-        <ion-card class="mobile-money">
 
-
-
+        <ion-card id="ion-card-edit">
             <ion-grid>
                 <ion-row>
+                    <ion-col size="3">
+                        <img src="assets/icon//espece.png" alt="icon-mobile-money">
+                    </ion-col>
 
-                    <ion-col size="12">
-                        <h2><img src="assets/icon/espece.png" alt="icon-espece"> Cash</h2>
+                    <ion-col size="8" class="center">
+                        <ion-row>
+                            <h2> Cash</h2>
+
+                        </ion-row>
+                        <ion-row>
+
+                            <p>
+                                <input type="radio" name="awesome-radiobox" id="cash" checked />
+                                <label for="cash"> Defaul payment</label>
+                            </p>
+                        </ion-row>
+
+
                     </ion-col>
 
 
-
-
-
-                </ion-row>
-                <ion-row>
-                    <ion-col size="12">
-                        <input type="radio" name="awesome-radiobox" id="cash" checked />
-                        <label for="cash"> Defaul payment</label>
-                    </ion-col>
 
                 </ion-row>
             </ion-grid>
         </ion-card>
 
 
-        <ion-card *ngFor="let item of MobileMoneysData">
-            <ion-fab-button id="close" (click)="deleteMobileMoney(item)">
-                <ion-icon name="add"></ion-icon>
-            </ion-fab-button>
+
+
+
+        <ion-card id="ion-card-edit" *ngFor="let item of MobileMoneysData">
             <ion-grid>
                 <ion-row>
-
-                    <ion-col size="12">
-                        <h2><img src="assets/icon/icon-mobile-money.png" alt="icon-mobile-money"> {{ item.tel }}</h2>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col size="12">
-                        <input type="radio" name="awesome-radiobox" id="mobileMoney{{ item.id }}" checked />
-                        <label for="mobileMoney{{ item.id }}"> Defaul payment</label>
+                    <ion-col size="3">
+                        <img src="assets/icon/icon-mobile-money.png" alt="icon-mobile-money">
                     </ion-col>
 
+                    <ion-col size="8" class="center">
+                        <ion-row>
+                            <h2> {{ item.tel }}</h2>
+
+                        </ion-row>
+                        <ion-row>
+
+                            <p>
+                                <input type="radio" name="awesome-radiobox" id="mobileMoney{{ item.id }}" />
+                                <label for="mobileMoney{{ item.id }}"> Defaul payment</label>
+                            </p>
+                        </ion-row>
+
+
+                    </ion-col>
+
+
+                    <ion-col size="1" class="center" id="trash">
+                        <ion-fab-button style="width: 30px;height: 30px;" (click)="deleteMobileMoney(item)">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </ion-fab-button>
+                    </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-card>
-        <ion-card *ngFor="let item of CreditCardsData">
-            <ion-fab-button id="close" (click)="deleteCreditCard(item)">
-                <ion-icon name="close-circle-outline"></ion-icon>
-            </ion-fab-button>
+
+
+
+
+
+
+        <ion-card id="ion-card-edit" *ngFor="let item of CreditCardsData">
             <ion-grid>
                 <ion-row>
-
-                    <ion-col size="12">
-                        <h2><img src="assets/icon/icon-mastercard.png" alt="icon-mobile-money"> {{ item.cardNumber }}</h2>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col size="12">
-                        <input type="radio" name="awesome-radiobox" id="creditcard{{ item.id }}" />
-                        <label for="creditcard{{ item.id }}"> Defaul payment</label>
+                    <ion-col size="3">
+                        <img src="assets/icon/icon-mastercard.png" alt="icon-mobile-money">
                     </ion-col>
 
+                    <ion-col size="8" class="center">
+                        <ion-row>
+                            <h2> {{ item.cardNumber }}</h2>
+
+                        </ion-row>
+                        <ion-row>
+
+                            <p>
+                                <input type="radio" name="awesome-radiobox" id="creditcard{{ item.id }}" />
+                                <label for="creditcard{{ item.id }}"> Defaul payment</label>
+                            </p>
+                        </ion-row>
+
+
+                    </ion-col>
+
+
+                    <ion-col size="1" class="center" id="trash">
+                        <ion-fab-button style="width: 30px;height: 30px;" (click)="deleteCreditCard(item)">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </ion-fab-button>
+                    </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-card>
-        <ion-card *ngFor="let item of PaypalsData">
-            <ion-fab-button id="close" (click)="delete(item)">
-                <ion-icon name="close-outline"></ion-icon>
-            </ion-fab-button>
+
+
+
+        <ion-card id="ion-card-edit" *ngFor="let item of PaypalsData">
             <ion-grid>
                 <ion-row>
-
-                    <ion-col size="12">
-                        <h2><img src="assets/icon/icon-paypal.png" alt="icon-mobile-money"> {{ item.email }}</h2>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col size="12">
-                        <input type="radio" name="awesome-radiobox" id="paypal{{ item.id }}" />
-                        <label for="paypal{{ item.id }}"> Defaul payment</label>
+                    <ion-col size="3">
+                        <img src="assets/icon/icon-paypal.png" alt="icon-mobile-money">
                     </ion-col>
 
+                    <ion-col size="8" class="center">
+                        <ion-row>
+                            <h2> {{ item.email }}</h2>
+
+                        </ion-row>
+                        <ion-row>
+
+                            <p>
+                                <input type="radio" name="awesome-radiobox" id="paypal{{ item.id }}" />
+                                <label for="paypal{{ item.id }}"> Defaul payment</label>
+                            </p>
+                        </ion-row>
+
+
+                    </ion-col>
+
+
+                    <ion-col size="1" class="center" id="trash">
+                        <ion-fab-button style="width: 30px;height: 30px;" (click)="delete(item)">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </ion-fab-button>
+                    </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-card>
@@ -106,5 +158,6 @@
             <ion-icon name="add-circle-outline"></ion-icon>
         </ion-fab-button>
     </ion-fab>
+
 
 </ion-content>

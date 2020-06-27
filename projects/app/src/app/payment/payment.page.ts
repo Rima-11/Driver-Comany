@@ -25,51 +25,51 @@ export class PaymentPage implements OnInit {
   }
 
   getAllPaypal() {
-    //Get saved list of students
+    // Get saved list of students
     this.apiService.getListPaypal().subscribe(response => {
       console.log(response);
       this.PaypalsData = response;
-    })
+    });
   }
 
 
   delete(item) {
-    //Delete item in Student data
+    // Delete item in Student data
     this.apiService.deleteItemPaypal(item.id).subscribe(Response => {
-      //Update list after delete is successful
+      // Update list after delete is successful
       this.getAllPaypal();
     });
   }
   getAllMobileMoney() {
-    //Get saved list of students
+    // Get saved list of students
     this.apiService.getListMobileMoney().subscribe(response => {
       console.log(response);
       this.MobileMoneysData = response;
-    })
+    });
   }
 
 
   deleteMobileMoney(item) {
-    //Delete item in Student data
+    // Delete item in Student data
     this.apiService.deleteMobileMoney(item.id).subscribe(Response => {
-      //Update list after delete is successful
+      // Update list after delete is successful
       this.getAllMobileMoney();
     });
   }
 
     getAllCreditCard() {
-    //Get saved list of students
+    // Get saved list of students
     this.apiService.getListCreditCard().subscribe(response => {
       console.log(response);
       this.CreditCardsData = response;
-    })
+    });
   }
 
 
   deleteCreditCard(item) {
-    //Delete item in Student data
+    // Delete item in Student data
     this.apiService.deleteCreditCard(item.id).subscribe(Response => {
-      //Update list after delete is successful
+      // Update list after delete is successful
       this.getAllCreditCard();
     });
   }

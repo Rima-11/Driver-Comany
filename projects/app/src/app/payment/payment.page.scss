@@ -20,14 +20,13 @@
     }
 
     p {
-        margin: 0px;
-        color: #382574;
-        font-weight: bold;
+        margin-bottom: 11px;
+        margin-top: 0px;
     }
 
     img {
-        height: 30px;
-        width: 30px;
+        height: 67px;
+        width: 79px;
         margin-right: 4px;
     }
 
@@ -37,16 +36,16 @@
     }
 
     ion-card {
-        margin: 25px 20px 0px 20px;
+        margin: 25px 5px 0px 5px;
         height: 80px;
     }
 
     h2 {
         color: darken($color: #000000, $amount: 0);
-        font-weight: normal;
-        margin-top: 0px;
+        font-weight: bold;
+        margin-top: 15px;
         margin-bottom: 0px;
-        font-size: 20px;
+        font-size: 16px;
         display: flex;
         margin-right: 10px;
     }
@@ -54,13 +53,12 @@
     label {
         font-weight: 300;
         font-family: 'Alegreya Sans', sans-serif;
-        font-size: 22px;
+        font-size: 16px;
         display: block;
-        padding-left: 29px;
-        margin-bottom: 15px;
+        padding-left: 20px;
+        margin-bottom: 7px;
         cursor: pointer;
-        font-size: 20px;
-        margin-left: 4px;
+        margin-left: 0px;
     }
 
     input {
@@ -87,7 +85,7 @@
     label {
         display: inline-block;
         position: relative;
-        font-size: 20px;
+        font-size: 16px;
         color: #2AA1C0;
     }
 
@@ -100,8 +98,8 @@
         display: inline-block;
         content: '';
         border: 1px solid grey;
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
         border-radius: 12px;
         margin-right: 5px;
     }
@@ -114,7 +112,7 @@
     input[type="radio"]+label::before {
         @extend %input-label-settings;
         position: absolute;
-        top: 2px;
+        top: 0px;
         left: 0;
     }
 
@@ -123,9 +121,9 @@
         content: "";
         border-radius: 10px;
         opacity: 0;
-        width: 12px;
-        height: 12px;
-        top: 7px;
+        width: 8px;
+        height: 8px;
+        top: 5px;
         left: 5px;
         position: absolute;
         transform: scale(0);
@@ -148,12 +146,10 @@
         --background: #382574;
     }
 
-    #close {
-        float: right;
-        width: 20px;
-        height: 20px;
-        margin-left: 0px;
-        position: relative;
-        top: 5px;
-        right: 5px;
+    #trash {
+        padding: 0px;
+    }
+
+    #trash ion-fab-button {
+        text-align: right;
     }
