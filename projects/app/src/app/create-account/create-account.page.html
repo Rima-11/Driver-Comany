@@ -16,7 +16,7 @@
           <ion-input formControlName="phone" type="phone" [class.invalid]="!slideOneForm.controls.phone.valid && (slideOneForm.controls.phone.dirty || submitAttempt)"></ion-input>
         </ion-item>
         <ion-buttons slot="end">
-          <ion-button  (click)="verifyPhone()" style="--background:#382574;" class="arrow-forward next-phone">Next<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+          <ion-button [disabled]="verifPhone()"  (click)="next($event)" id="phone" style="--background:#382574;" class="arrow-forward next-phone">Next<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
         </ion-buttons>
         </form>
       </ion-list>
@@ -26,11 +26,11 @@
           <form [formGroup]="slideOneForm">
           <ion-item>
             <ion-label position="floating" style="color:#382574;">Code</ion-label>
-            <ion-input formControlName="code" type="text" [class.invalid]="!slideOneForm.controls.code.valid && (slideOneForm.controls.code.dirty || submitAttempt)"></ion-input>
+            <ion-input  #code (keyup)="verifyCode(code.value)" formControlName="code" type="text" [class.invalid]="!slideOneForm.controls.code.valid && (slideOneForm.controls.code.dirty || submitAttempt)"></ion-input>
           </ion-item>
           <ion-buttons>
             <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
-            <ion-button  disabled="{{verifyCode()}}" (click)="next()" style="--background:#382574;" class="arrow-forward"  (click)="verifyCode()">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+            <ion-button  [disabled]="disabled" id="code" style="--background:#382574;" class="arrow-forward" (click)="next($event)">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
           </ion-buttons>
           </form>
         </ion-list>
@@ -53,7 +53,7 @@
           </ion-radio-group>
           <ion-buttons>
             <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
-            <ion-button (click)="next()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+            <ion-button (click)="next($event)" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
           </ion-buttons>
           </form>
       </ion-list>
@@ -84,7 +84,7 @@
               </ion-item>
               <ion-buttons>
                 <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
-                <ion-button (click)="next()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+                <ion-button (click)="next($event)" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
               </ion-buttons>
           </form>
       </ion-list>
@@ -106,7 +106,7 @@
             </ion-item>
             <ion-buttons>
               <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
-              <ion-button (click)="next()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+              <ion-button (click)="next($event)" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
             </ion-buttons>
           </form>
         </ion-list>
@@ -129,8 +129,6 @@
                 <p class="error" *ngIf="slideOneForm.get('Confirmpassword').hasError('equalTo') && slideOneForm.get('Confirmpassword').touched">
                 Confirm Password
                 </p>
-              </ion-item>
-              <ion-item>
               </ion-item>
           </form>
       </ion-list>

@@ -1,9 +1,9 @@
 import { Component, OnInit,ViewChild, ViewChildren, QueryList } from '@angular/core';
 import {HttpClient} from'@angular/common/http';
-import {IonSlides, NavController} from '@ionic/angular';
-import {FormBuilder, FormGroup} from '@angular/forms'
+import { FormBuilder } from '@angular/forms'
 import {Validators,ValidatorFn, AbstractControl} from '@angular/forms';
 import { Router } from '@angular/router';
+import { isArray } from 'util';
 
 @Component({
   selector: 'app-create-account',
@@ -16,37 +16,41 @@ export class CreateAccountPage implements OnInit {
   slideOneForm: any;
   slides: any;
   store: any;
-  code=123;
+  code : string ="123";
+  empty:boolean ;
+  disabled : boolean;
   phoneData={
     phone:''
   };
+
+  constructor(public formBuilder: FormBuilder,private http:HttpClient, private router: Router) {}
+
  ngOnInit() {
-  
+
+  this.slideOneForm = this.formBuilder.group({
+    firstName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+    lastName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+    email: ['',Validators.compose([
+      Validators.required,
+      Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+    ])],
+    phone:['',Validators.compose([Validators.required])],
+    accountType:['',Validators.compose([
+      Validators.required])],
+    code:['',Validators.compose([
+        Validators.required])],
+    zip :['',Validators.compose([
+      Validators.required])],
+    town:['',Validators.compose([
+      Validators.required])],
+    country:['',Validators.compose([
+      Validators.required])],
+    password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
+    Confirmpassword:['',[Validators.required,this.equalto('password')]]
+    // person:['',]
+});
   }
-  constructor(public nav: NavController,public formBuilder: FormBuilder,private http:HttpClient,private router: Router) {
-    this.slideOneForm = formBuilder.group({
-        firstName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        lastName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        email: ['',Validators.compose([
-          Validators.required,
-          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-        ])],
-        phone:['',Validators.compose([Validators.required])],
-        accountType:['',Validators.compose([
-          Validators.required])],
-        code:['',Validators.compose([
-            Validators.required])],
-        zip :['',Validators.compose([
-          Validators.required])],
-        town:['',Validators.compose([
-          Validators.required])],
-        country:['',Validators.compose([
-          Validators.required])],
-        password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
-        Confirmpassword:['',[Validators.required,this.equalto('password')]]
-        // person:['',]
-    });
-}
+ 
 
 //password 
 
@@ -63,8 +67,15 @@ equalto(field_name): ValidatorFn {
 
 //previous next
 
-next(){
-  this.signupSlider.slideNext();
+next($event? : any){
+  const value = $event.target|| $event.srcElement || $event.currentTarget;
+  const idAttribute = value.attributes.id;
+  if (idAttribute?.nodeValue === "phone") {
+   this.verifyPhone();
+  }
+  else { 
+    this.signupSlider.slideNext();
+  }
 }
 checkValue(event){ 
   console.log(event.detail.value);
@@ -82,7 +93,7 @@ prev(){
     else {
        let url="http://localhost:3000/users";
   this.http.post(url,this.slideOneForm.value).toPromise().then((data:any)=>{
-    console.log(data);
+    this.router.navigate(['/home']);
   });
   //console.log(this.slideOneForm.value.phone);
     }   
@@ -93,26 +104,37 @@ prev(){
 verifyPhone()
 {
   let url="http://localhost:3000/users";
-  this.http.get(url)
-  .subscribe((data) => {
-  for(let i=0;i< Object.keys(data).length; i++ )
+  const phone = this.slideOneForm.value.phone;
+ this.http.get(url + "?phone=" + phone)
+  .subscribe((data:Array<any>) => {
+  if (data.length)
   {
-   var phones=data[i].phone;
-   if (phones==this.slideOneForm.value.phone)
-   {
-    this.router.navigate(['/signup'])
-   }
-   else {
-    this.signupSlider.slideNext();
-   }   
-  }
+    this.router.navigate(['/login']);
+ } else { 
+  this.verifyCode(this.slideOneForm.value.code);
+  this.signupSlider.slideNext();
+ }
 });
+
 }
 
+verifPhone() {
+  if (this.slideOneForm.value.phone.length === 0)
+  {
+   return true ;
+  }
+  else {
+    return false;
+  }
+}
 //verify code 
 
-verifyCode() {
-  if (this.code==this.slideOneForm.value.code) return false ;
-           return true ;
+verifyCode(value:string) {
+  if (this.code === value) {
+    this.disabled = false ;
+  }
+  else { 
+     this.disabled = true ;
+  }
 }
 }
