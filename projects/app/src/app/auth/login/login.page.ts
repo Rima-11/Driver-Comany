@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router } from  '@angular/router';
 import { User } from  '../user';
 import { AuthService } from  '../auth.service';
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,7 +11,8 @@ import { AuthService } from  '../auth.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder ) { }
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder
+    ,private cookieService: CookieService  ) { }
   loginForm: FormGroup;
   isSubmitted  =  false;
   errorMessage = '';
@@ -19,9 +20,10 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.loginForm  =  this.formBuilder.group({
-       phone: ['', Validators.required],
-        password :['', Validators.required],
-      
+      phone :['',Validators.compose([Validators.minLength(8),
+        Validators.required,])],
+        password :['',Validators.compose([Validators.required])],
+        remember :['']
     });
 }
 
