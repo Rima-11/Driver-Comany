@@ -3,6 +3,7 @@ export interface AuthResponse {
       name: string,
       phone: number,
       access_token: string,
-      expires_in: number
+      expires_in: number,
+      remember: boolean
   }
 }
