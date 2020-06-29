@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Payment',
-      url: '/folder/payment',
+      url: '/payment',
       icon: 'card'
     },
     {

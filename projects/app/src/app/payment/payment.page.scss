@@ -1,0 +1,155 @@
+    ion-header ion-toolbar {
+        --background: #382574;
+    }
+
+    ion-title,
+    ion-buttons {
+        color: #FFFFFF;
+    }
+
+    .md .centered-title {
+        text-align: center;
+        margin-left: -15%
+    }
+
+    .center {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: baseline;
+    }
+
+    p {
+        margin-bottom: 11px;
+        margin-top: 0px;
+    }
+
+    img {
+        height: 67px;
+        width: 79px;
+        margin-right: 4px;
+    }
+
+    .mobile-money {
+        margin: 50px 20px 10px 20px;
+        height: 80px;
+    }
+
+    ion-card {
+        margin: 25px 5px 0px 5px;
+        height: 80px;
+    }
+
+    h2 {
+        color: darken($color: #000000, $amount: 0);
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 0px;
+        font-size: 16px;
+        display: flex;
+        margin-right: 10px;
+    }
+
+    label {
+        font-weight: 300;
+        font-family: 'Alegreya Sans', sans-serif;
+        font-size: 16px;
+        display: block;
+        padding-left: 20px;
+        margin-bottom: 7px;
+        cursor: pointer;
+        margin-left: 0px;
+    }
+
+    input {
+        padding: .75rem .5rem .75rem .8rem;
+        border: solid 1px grey;
+        width: 100%;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    input[readonly],
+    input[disabled] {
+        cursor: not-allowed;
+        background: white;
+    }
+
+    input[readonly='readonly'],
+    input[disabled='disabled'] {
+        cursor: not-allowed;
+        background: white;
+    }
+
+    label {
+        display: inline-block;
+        position: relative;
+        font-size: 16px;
+        color: #2AA1C0;
+    }
+
+    input[type='radio'] {
+        margin-right: 0.25rem;
+        margin-bottom: 1rem;
+    }
+
+    %input-label-settings {
+        display: inline-block;
+        content: '';
+        border: 1px solid grey;
+        width: 16px;
+        height: 16px;
+        border-radius: 12px;
+        margin-right: 5px;
+    }
+
+    input[type="radio"] {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+    }
+
+    input[type="radio"]+label::before {
+        @extend %input-label-settings;
+        position: absolute;
+        top: 0px;
+        left: 0;
+    }
+
+    input[type="radio"]+label::after {
+        background-color: #2AA1C0;
+        content: "";
+        border-radius: 10px;
+        opacity: 0;
+        width: 8px;
+        height: 8px;
+        top: 5px;
+        left: 5px;
+        position: absolute;
+        transform: scale(0);
+        transition: transform 200ms ease;
+    }
+
+    input[type="radio"]:checked+label {
+        &:after {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    ion-col {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    ion-fab-button {
+        --background: #382574;
+    }
+
+    #trash {
+        padding: 0px;
+    }
+
+    #trash ion-fab-button {
+        text-align: right;
+    }

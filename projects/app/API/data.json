@@ -1,0 +1,23 @@
+{
+  "mobilemoneys": [
+    {
+      "tel": "22543372",
+      "id": 1
+    }
+  ],
+  "Paypals": [
+    {
+      "email": "hamza-badrouchi@live.fr",
+      "id": 1
+    }
+  ],
+  "creditCards": [
+    {
+      "name": "hamza badrouchi",
+      "cardNumber": "1234 7894 4567 7569",
+      "expiry": "05/2023",
+      "cvv": "123",
+      "id": 2
+    }
+  ]
+}
