@@ -36,7 +36,7 @@ login(form){
       return;
     }
   this.authService.login(this.loginForm.value).subscribe((res)=>{
-    this.router.navigateByUrl('folder/home');
+    this.router.navigateByUrl('home');
   },err => {
     this.errorMessage = err.error.message;
     console.log(this.errorMessage);
