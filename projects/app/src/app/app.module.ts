@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from  './auth/auth.module';
 import { CookieService } from 'ngx-cookie-service';
+import {Geolocation} from '@ionic-native/geolocation/ngx'
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -23,6 +25,7 @@ import { CookieService } from 'ngx-cookie-service';
   ],
   providers: [
     StatusBar,
+    Geolocation,
     SplashScreen,
     CookieService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

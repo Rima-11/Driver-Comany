@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Home',
-      url: '/folder/home',
+      url: '/home',
       icon: 'home'
     },
     {
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
       icon: 'exit'
     }
   ];
-
+  
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,

@@ -53,14 +53,17 @@ const routes: Routes = [
     path: 'mobile-money-add',
     loadChildren: () => import('./mobile-money-add/mobile-money-add.module').then( m => m.MobileMoneyAddPageModule)
   },
+
   {
     path: 'credit-card',
     loadChildren: () => import('./credit-card/credit-card.module').then( m => m.CreditCardPageModule)
-
-
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   }
-
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
@@ -68,4 +71,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-
