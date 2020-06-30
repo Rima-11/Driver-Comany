@@ -1,23 +1,21 @@
 {
-  "mobilemoneys": [
+  "mobilemoneys": [],
+  "Paypals": [],
+  "creditCards": [],
+  "users": [
     {
-      "tel": "22543372",
+      "firstName": "wafa",
+      "lastName": "saleh",
+      "email": "wafasaleh@confledis.com",
+      "phone": "27937224",
+      "accountType": "Client",
+      "code": "123",
+      "zip": "5000",
+      "town": "Monastir",
+      "country": "Tunisia",
+      "password": "wafa",
+      "Confirmpassword": "wafa",
       "id": 1
-    }
-  ],
-  "Paypals": [
-    {
-      "email": "hamza-badrouchi@live.fr",
-      "id": 1
-    }
-  ],
-  "creditCards": [
-    {
-      "name": "hamza badrouchi",
-      "cardNumber": "1234 7894 4567 7569",
-      "expiry": "05/2023",
-      "cvv": "123",
-      "id": 2
     }
   ]
 }

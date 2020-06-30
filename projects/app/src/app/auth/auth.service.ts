@@ -10,7 +10,7 @@ import { AuthResponse } from  './auth-response';
   providedIn: 'root'
 })
 export class AuthService {
-  AUTH_SERVER_ADDRESS:  string  =  'http://localhost:3000';
+  AUTH_SERVER_ADDRESS:  string  =  'http://localhost:3001';
   authSubject  =  new  BehaviorSubject(false);
 
    rmCheck = document.getElementById("rememberMe");
