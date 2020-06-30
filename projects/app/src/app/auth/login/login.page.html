@@ -37,17 +37,14 @@
    </div>
   </div>
        <ion-button type="submit" expand="block" shape="round" >Login</ion-button>
-
-      <div>
-
+   <div>
         <span class="ion-float-left">
         <ion-checkbox checked="false" slot="start" color= "dark"
         formControlName="remember"></ion-checkbox> <ion-label>Remember me </ion-label>
       </span>
-
-        <span class="ion-float-right" [routerLink]="['/folder/home']" style="text-decoration: underline;" > Forgot password? </span>
-     </div>
-
-
+      <span class="ion-float-right">
+         <a  routerLink="/reset-password" style="text-decoration: underline;" > Forgot password? </a>
+      </span>
+    </div>
     </form>
   </ion-content>
