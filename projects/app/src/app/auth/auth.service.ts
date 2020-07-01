@@ -13,9 +13,6 @@ export class AuthService {
   AUTH_SERVER_ADDRESS:  string  =  'http://localhost:3001';
   authSubject  =  new  BehaviorSubject(false);
 
-   rmCheck = document.getElementById("rememberMe");
-    phoneInput = document.getElementById("phone");
-    passwordInput = document.getElementById("password");
   constructor(private  httpClient:  HttpClient, private  storage:  Storage) { }
 
 
@@ -27,28 +24,11 @@ export class AuthService {
           await this.storage.set("ACCESS_TOKEN", res.user.access_token);
           await this.storage.set("EXPIRES_IN", res.user.expires_in);
           await this.storage.set("REMEMBER_ME" , res.user.remember);
-          if (localStorage.checkbox && localStorage.checkbox !== "") {
-           this.rmCheck.setAttribute("checked", "checked");
-           // this.phoneInput.value = localStorage.phone;
-          } else {
-            this.rmCheck.removeAttribute("checked");
-           // this.phoneInput.value = "";
-          }
-
           this.authSubject.next(true);}
 
       })
     );
   }
-  // lsRememberMe() {
-  //   // if (this.rmCheck.checked && this.phoneInput.value !== "") {
-  //   //   localStorage.phone = this.phoneInput.value;
-  //   //   localStorage.checkbox = this.rmCheck.value;
-  //   } else {
-  //     localStorage.phone = "";
-  //     localStorage.checkbox = "";
-  //   }
-  // }
   isLoggedIn() {
     return this.authSubject.asObservable();
   }

@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router } from  '@angular/router';
 import { User } from  '../user';
 import { AuthService } from  '../auth.service';
-import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,8 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder
-    ,private cookieService: CookieService  ) { }
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder ) { }
   loginForm: FormGroup;
   isSubmitted  =  false;
   errorMessage = '';
