@@ -1,9 +1,11 @@
 {
-  "profile": {
-    "id": 1,
-    "firstname": "Hamza",
-    "lastname": "BADROUCHI",
-    "email": "hamza@live.fr",
-    "phone": "+216 24612088"
-  }
+  "users": [
+    {
+      "id": 1,
+      "firstname": "hamzan",
+      "lastname": "badrouchi",
+      "email": "hamza@gmail.com",
+      "phone": "+216 24612088"
+    }
+  ]
 }

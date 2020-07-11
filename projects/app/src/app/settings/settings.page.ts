@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -8,26 +9,32 @@ import { ApiService } from '../services/api.service';
 })
 export class SettingsPage implements OnInit {
 
-  studentsData: any;
+  profilesData: any;
 
   constructor(
-    public apiService: ApiService
+    public apiService: ApiService, public activatedRoute: ActivatedRoute
   ) {
-    this.studentsData = [];
+    this.profilesData = [];
   }
 
   ngOnInit() {
+    console.log('onIti')
   }
+
   ionViewWillEnter() {
+    console.log('2 ionview')
     // Used ionViewWillEnter as ngOnInit is not 
     // called due to view persistence in Ionic
-    this.getAllStudents();
+    const id = this.activatedRoute.snapshot.params["id"] ?? 1;
+    this.getProfile(id);
   }
-  getAllStudents() {
+  
+  getProfile(id:number) {
     //Get saved list of students
-    this.apiService.getList().subscribe(response => {
+    this.apiService. getItem(id).subscribe(response => {
       console.log(response);
-      this.studentsData = response;
+      this.profilesData = response;
+      
     })
   }
 }
