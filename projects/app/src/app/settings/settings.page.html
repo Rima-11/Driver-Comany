@@ -18,10 +18,10 @@
                         <ion-icon name="person"></ion-icon>
                     </ion-fab-button>
                 </ion-col>
-                <ion-col size="8" class="center">
-                    <p style="text-align: right;">Hamza BADROUCHI</p>
-                    <p style="text-align: right;">+216 24613249</p>
-                    <p style="text-align: right;">hamza-badrouchi@live.fr</p>
+                <ion-col size="8" class="center" *ngFor="let item of studentsData">
+                    <p style="text-align: right;">{{ item.firstname }} {{ item.lastname }}</p>
+                    <p style="text-align: right;">{{ item.phone }}</p>
+                    <p style="text-align: right;">{{ item.email }}</p>
                 </ion-col>
                 <ion-col size="2" class="center">
                     <ion-fab-button style="width: 30px;height: 30px;" routerLink="/edit">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-settings',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPage implements OnInit {
 
-  constructor() { }
+  studentsData: any;
+
+  constructor(
+    public apiService: ApiService
+  ) {
+    this.studentsData = [];
+  }
 
   ngOnInit() {
   }
-
+  ionViewWillEnter() {
+    // Used ionViewWillEnter as ngOnInit is not 
+    // called due to view persistence in Ionic
+    this.getAllStudents();
+  }
+  getAllStudents() {
+    //Get saved list of students
+    this.apiService.getList().subscribe(response => {
+      console.log(response);
+      this.studentsData = response;
+    })
+  }
 }
