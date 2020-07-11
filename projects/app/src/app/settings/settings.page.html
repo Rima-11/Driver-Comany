@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title text-center>
+            <h1 class="centered-title">
+                <ion-icon name="settings"></ion-icon> Settings</h1>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content fullscreen no-border>
+    <ion-card id="ion-card-edit">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="2" class="center">
+                    <ion-fab-button style="width: 30px;height: 30px;">
+                        <ion-icon name="person"></ion-icon>
+                    </ion-fab-button>
+                </ion-col>
+                <ion-col size="8" class="center">
+                    <p style="text-align: right;">{{ profilesData.firstname }} {{ profilesData.lastname }}</p>
+                    <p style="text-align: right;">{{ profilesData.phone }}</p>
+                    <p style="text-align: right;">{{ profilesData.email }}</p>
+                </ion-col>
+                <ion-col size="2" class="center">
+                    <ion-fab-button style="width: 30px;height: 30px;" routerLink="/edit/">
+                        <i class="icon fa fa-chevron-right" style="float:right;"></i>
+                    </ion-fab-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+    <ion-card id="ion-card-security">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="2" class="center">
+                    <ion-fab-button style="width: 30px;height: 30px;">
+                        <i class="fas fa-lock"></i>
+                    </ion-fab-button>
+                </ion-col>
+                <ion-col size="8" class="center">
+                    <p style="text-align: right;">Security</p>
+                </ion-col>
+                <ion-col size="2" class="center">
+                    <ion-fab-button style="width: 30px;height: 30px;" routerLink="/password">
+                        <i class="icon fa fa-chevron-right" style="float:right;"></i>
+                    </ion-fab-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+</ion-content>

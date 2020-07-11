@@ -1,30 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { Profile } from '../models/profile';
 import { ApiService } from '../services/api.service';
-import { Router } from '@angular/router'; 
+import { Profile } from '../models/profile';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.page.html',
   styleUrls: ['./edit.page.scss'],
 })
 export class EditPage implements OnInit {
+  profilesData: any;
   id: number;
-  data: Profile;
-  constructor(
-    public apiService: ApiService,
-    public router: Router
-  ) {
-    this.data = new Profile();
+  user: Profile;
+  
+  constructor( public apiService: ApiService, public activatedRoute: ActivatedRoute) {  
+   this.user = new Profile;
   }
 
   ngOnInit() {
-  }
-
-  update() {
-    //Update item by taking id and updated data object
-    this.apiService.updateItem(this.id, this.data).subscribe(response => {
-      console.log(this.data);
+    console.log(2)
+    this.id = this.activatedRoute.snapshot.params["id"] ?? 1;
+    //get item details using id
+    this.apiService.getItem(this.id).subscribe(response => {
+      console.log(response);
+      this.user = response;
+      console.log(this.user)
     })
   }
 
+  update(userUpdated : Profile) {
+    console.log(userUpdated)
+    //Update item by taking id and updated data object
+    this.apiService.updateItem(userUpdated.id, userUpdated).subscribe(data => {
+     console.log(data)
+    })
+  }
 }

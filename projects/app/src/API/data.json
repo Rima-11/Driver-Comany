@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "hamzandd",
+      "lastname": "badrouchi",
+      "email": "hamza@gmail.com",
+      "phone": "+216 24612088"
+    }
+  ]
+}

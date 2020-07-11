@@ -1,31 +1,30 @@
 <ion-header>
   <ion-toolbar>
-   <a href="#"><ion-icon name="arrow-back"></ion-icon></a>
-    <ion-title class="ion-text-center"> <ion-icon name="person"></ion-icon> Profil</ion-title>
+   <a routerLink="/settings"><ion-icon name="arrow-back"></ion-icon></a>
+    <ion-title class="ion-text-center"> <ion-icon name="person"></ion-icon>Profil</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <ion-avatar>
     <img src="./assets/sabrina.jpeg" alt="">
     <!-- <ion-icon name="camera" class="camera"></ion-icon> -->
   </ion-avatar>
  <a href="#"><h2 class="ion-text-center">Edit</h2></a>
- <ion-list>
+ <ion-list >
    <ion-item>
- <ion-input [(ngModel)]="data.firstname" placeholder="First name"></ion-input>
+ <ion-input [(ngModel)]="user.firstname" placeholder="First name"></ion-input>
  </ion-item>
   <ion-item>
-    <ion-input [(ngModel)]="data.lastname" placeholder="Last name"></ion-input>
+    <ion-input [(ngModel)]="user.lastname"  placeholder="Last name"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input [(ngModel)]="data.email" placeholder="Email"></ion-input>
+    <ion-input [(ngModel)]="user.email"  placeholder="Email"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input [(ngModel)]="data.phone" placeholder="Phone"></ion-input>
+    <ion-input [(ngModel)]="user.phone"  placeholder="Phone"></ion-input>
   </ion-item>
 </ion-list>
 <div>
-  <ion-button (click)="update()">Validate</ion-button>
+  <ion-button (click)="update(user)">Validate</ion-button>
 </div>
 </ion-content>

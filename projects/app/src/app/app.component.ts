@@ -19,22 +19,22 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Courses',
-      url: '/folder/Courses',
+      url: '/folder/courses',
       icon: 'car'
     },
     {
       title: 'Payment',
-      url: '/folder/card',
+      url: '/folder/payment',
       icon: 'card'
     },
     {
       title: 'Settings',
-      url: '/folder/settings',
+      url: '/settings',
       icon: 'settings'
     },
     {
       title: 'Logout',
-      url: '/folder/exit',
+      url: '/folder/logout',
       icon: 'exit'
     }
   ];
