@@ -13,8 +13,8 @@ export class AuthService {
   AUTH_SERVER_ADDRESS:  string  =  'http://localhost:3001';
   authSubject  =  new  BehaviorSubject(false);
 
-  constructor(private  httpClient:  HttpClient, public storage: Storage) { }
-  
+  constructor(private  httpClient:  HttpClient, private storage: Storage) { }
+
   login(user: User): Observable<AuthResponse> {
     return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/auth/login`, user).pipe(
       tap(async (res: AuthResponse) => {

@@ -13,8 +13,7 @@ import { Storage } from  '@ionic/storage';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder
-    ,  public storage: Storage) { }
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder, private storage: Storage) { }
 
   loginForm: FormGroup;
   isSubmitted  =  false;
