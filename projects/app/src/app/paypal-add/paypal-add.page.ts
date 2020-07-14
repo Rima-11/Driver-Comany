@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Paypal } from '../models/Paypal';
+import { Paypal } from '../models/paypal';
 import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
 @Component({

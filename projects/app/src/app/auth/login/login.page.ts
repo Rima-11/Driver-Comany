@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router } from  '@angular/router';
 import { User } from  '../user';
 import { AuthService } from  '../auth.service';
+
+import { Storage } from  '@ionic/storage';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -10,12 +13,14 @@ import { AuthService } from  '../auth.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder ) { }
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder, private storage: Storage) { }
+
   loginForm: FormGroup;
   isSubmitted  =  false;
   errorMessage = '';
   isLoginFailed = false;
-
+  phone: number;
+  remember:boolean;
   ngOnInit() {
     this.loginForm  =  this.formBuilder.group({
       phone :['',Validators.compose([Validators.minLength(8),
@@ -23,7 +28,17 @@ export class LoginPage implements OnInit {
         password :['',Validators.compose([Validators.required])],
         remember :['']
     });
-}
+ console.log(this.storage);
+ this.storage.get("phone").then((valeur ) => {
+  // this.phone= valeur;
+  this.loginForm.get("phone").setValue(valeur);
+   console.log('Ma variable contient ', this.phone );
+   });
+   this.storage.get("remember").then((valeur ) => {
+     this.remember = valeur;
+     console.log('Ma variable contient ', this.remember );
+     });
+  }
 
 get formControls() { return this.loginForm.controls; }
 
@@ -34,6 +49,8 @@ login(form){
       return;
     }
   this.authService.login(this.loginForm.value).subscribe((res)=>{
+    console.log(this.storage);
+    console.log(this.authService.isLoggedIn());
     this.router.navigateByUrl('home');
   },err => {
     this.errorMessage = err.error.message;
