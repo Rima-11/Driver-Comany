@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon  name="arrow-back"></ion-icon>
+  <ion-title class="ionic-text-center"> <ion-icon name="log-in-outline"></ion-icon> Login</ion-title>
+  </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
+      <div class="form-group">
+    <ion-list>
+    <ion-item >
+      <ion-label [ngClass]="{ 'has-error':  isSubmitted  && formControls.phone.errors }" position="floating">Phone<ion-text color="danger">*</ion-text></ion-label>
+      <!-- <ion-input type="number" formControlName="phone" [class.invalid]="!loginForm.controls.phone.valid && (loginForm.controls.phone.dirty ||  isSubmitted )"></ion-input> -->
+      <ion-input type="text"  formControlName="phone"> </ion-input>
+    </ion-item>
+     <div *ngIf=" isSubmitted  && formControls.phone.errors" class="help-block">
+      <div *ngIf="formControls.phone.errors.required" > <h6> Phone is required ! </h6></div>
+    </div>
+    <ion-item>
+      <ion-label [ngClass]="{ 'has-error':  isSubmitted  && formControls.password.errors }" position="floating">Password<ion-text color="danger">*</ion-text>
+
+      </ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+     <div *ngIf=" isSubmitted  && formControls.password.errors" class="help-block">
+      <div *ngIf="formControls.password.errors.required"> <h6>Password is required !</h6></div>
+    </div>
+     </ion-list>
+    </div>
+     <div class="form-group">
+     <div class="alert alert-danger"
+     role="alert"
+     *ngIf="isSubmitted && isLoginFailed"
+   >
+   <div class="ion-text-center" >  {{errorMessage}} </div>
+   </div>
+  </div>
+       <ion-button type="submit" expand="block" shape="round" >Login</ion-button>
+   <div>
+        <span class="ion-float-left">
+        <ion-checkbox checked="false" slot="start" color= "dark"
+        formControlName="remember"></ion-checkbox> <ion-label>Remember me </ion-label>
+      </span>
+      <span class="ion-float-right">
+         <a  routerLink="/reset-password" style="text-decoration: underline;" > Forgot password? </a>
+      </span>
+    </div>
+    </form>
+  </ion-content>

@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Home',
-      url: '/folder/home',
+      url: '/home',
       icon: 'home'
     },
     {
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Payment',
-      url: '/folder/payment',
+      url: '/payment',
       icon: 'card'
     },
     {
@@ -39,7 +39,6 @@ export class AppComponent implements OnInit {
     }
   ];
   
-
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
