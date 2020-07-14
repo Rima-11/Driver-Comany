@@ -1,21 +1,32 @@
-import {Component} from '@angular/core';
+import { Component,  OnInit} from '@angular/core';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-declare var google: any;
+
+declare var google;
 
 @Component({
     selector: 'app-home',
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
     map: any;
     baseUrl = 'assets/image.png/';
-    constructor(public geolocation: Geolocation) {
-    }
+    directionsService = new google.maps.DirectionsService;
+directionsDisplay = new google.maps.DirectionsRenderer;
+directionForm: FormGroup;
+    constructor(public geolocation: Geolocation, private fb: FormBuilder) {   this.createDirectionForm();  }
     ngOnInit() {
       this.loadMap();
     }
+    createDirectionForm() {
+      this.directionForm = this.fb.group({
+        source: ['', Validators.required],
+        destination: ['', Validators.required]
+      });
+    }
+
     loadMap() {
         this.geolocation.getCurrentPosition().then((resp) => {
             let lat = resp.coords.latitude;
@@ -27,10 +38,26 @@ export class HomePage {
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 mapTypeControl: false
             });
+            this.directionsDisplay.setMap(this.map);
             this.addMyPosition(latLng);
             this.addHousePosition();
             this.addCarPosition();
+
         });
+    }
+    calculateAndDisplayRoute(formValues) {
+      const that = this;
+      this.directionsService.route({
+        origin: formValues.source,
+        destination: formValues.destination,
+        travelMode: 'DRIVING'
+      }, (response, status) => {
+        if (status === 'OK') {
+          that.directionsDisplay.setDirections(response);
+        } else {
+          window.alert('Directions request failed due to ' + status);
+        }
+      });
     }
     addMyPosition(latLng) {
         const marker = new google.maps.Marker({
@@ -86,5 +113,6 @@ export class HomePage {
             infoWindow.open(this.map, marker);
         });
     }
+
   }
 

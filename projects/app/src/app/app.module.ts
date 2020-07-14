@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from  './auth/auth.module';
-import { CookieService } from 'ngx-cookie-service';
-import {Geolocation} from '@ionic-native/geolocation/ngx'
+import {Geolocation} from '@ionic-native/geolocation/ngx';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,13 +21,14 @@ import {Geolocation} from '@ionic-native/geolocation/ngx'
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    AuthModule
+    AuthModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     StatusBar,
     Geolocation,
     SplashScreen,
-    CookieService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
