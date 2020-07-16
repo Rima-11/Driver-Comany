@@ -44,7 +44,7 @@ export class ApiService {
 
   getItem(id): Observable<Profile> {
      return this.http
-      .get<Profile>(`${this.base_path}/users/${id}`)
+      .get<Profile>(`${this.base_path}/users/${id}`, this.httpOptions)
       .pipe(
        retry(2),
         catchError(this.handleError)
@@ -54,7 +54,7 @@ export class ApiService {
   // Get Profile data
   getList(): Observable<Profile> {
     return this.http
-      .get<Profile>(`${this.base_path}/users/`)
+      .get<Profile>(`${this.base_path}/users/`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -71,15 +71,57 @@ export class ApiService {
         catchError(this.handleError)
       )
   }
-  // Delete item by id
-  deleteMobileMoney(id) {
-    return this.http
-      .delete<Mobilemoney>(`${this.base_path}/mobilemoneys/${id}`, this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
-  }
+
+// Create a new item
+createItemMobileMoney(item): Observable<Mobilemoney> {
+  return this.http
+    .post<Mobilemoney>(`${this.base_path}/mobilemoneys`, JSON.stringify(item), this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+}
+
+// Get single Mobilemoney data by ID
+getItemMobileMoney(id): Observable<Mobilemoney> {
+  return this.http
+    .get<Mobilemoney>(`${this.base_path}/mobilemoneys/${id}`, this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+}
+
+// Get Mobilemoney data
+getListMobileMoney(): Observable<Mobilemoney> {
+  return this.http
+    .get<Mobilemoney>(`${this.base_path}/mobilemoneys`, this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+}
+
+// Update item by id
+updateItemMobileMoney(id, item): Observable<Mobilemoney> {
+  return this.http
+    .put<Mobilemoney>(`${this.base_path}/mobilemoneys/${id}`, JSON.stringify(item), this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+}
+
+// Delete item by id
+deleteMobileMoney(id) {
+  return this.http
+  .delete<Mobilemoney>(`${this.base_path}/mobilemoneys/${id}`, this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+}
+
   // ****************************************paypa************************************************/
 // Create a new item
 // tslint:disable-next-line: adjacent-overload-signatures
@@ -96,7 +138,7 @@ createItemPaypal(item: Paypal): Observable<Paypal> {
 // tslint:disable-next-line: adjacent-overload-signatures
 getItemPaypal(id): Observable<Paypal> {
   return this.http
-    .get<Paypal>(`${this.base_path}/paypals/${id}`)
+    .get<Paypal>(`${this.base_path}/paypals/${id}`, this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError)
@@ -107,7 +149,7 @@ getItemPaypal(id): Observable<Paypal> {
 // tslint:disable-next-line: adjacent-overload-signatures
 getListPaypal(): Observable<Paypal> {
   return this.http
-    .get<Paypal>(`${this.base_path}/paypals`)
+    .get<Paypal>(`${this.base_path}/paypals`, this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError)
@@ -151,7 +193,7 @@ createItemCreditCard(item: CreditCard): Observable<CreditCard> {
 // tslint:disable-next-line: adjacent-overload-signatures
 getItemCreditCard(id): Observable<CreditCard> {
   return this.http
-    .get<CreditCard>(`${this.base_path}/creditCards/${id}`)
+    .get<CreditCard>(`${this.base_path}/creditCards/${id}`, this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError)
@@ -162,7 +204,7 @@ getItemCreditCard(id): Observable<CreditCard> {
 // tslint:disable-next-line: adjacent-overload-signatures
 getListCreditCard(): Observable<CreditCard> {
   return this.http
-    .get<CreditCard>(`${this.base_path}/creditCards`)
+    .get<CreditCard>(`${this.base_path}/creditCards`, this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError)

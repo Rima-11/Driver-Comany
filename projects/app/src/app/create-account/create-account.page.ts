@@ -28,8 +28,8 @@ export class CreateAccountPage implements OnInit {
  ngOnInit() {
 
   this.slideOneForm = this.formBuilder.group({
-    firstName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-    lastName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+    firstname: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+    lastname: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.required])],
     email: ['',Validators.compose([
       Validators.required,
       Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')

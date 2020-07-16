@@ -65,21 +65,21 @@
               <ion-label position="floating" style="color:#382574;">Email</ion-label>
               <ion-input formControlName="email" type="email" [class.invalid]="!slideOneForm.controls.email.valid && (slideOneForm.controls.email.dirty || submitAttempt)"></ion-input>
           </ion-item>
-          <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
+          <ion-item *ngIf="!slideOneForm.controls.lastname.valid  && (slideOneForm.controls.lastname.dirty || submitAttempt)">
               <p>Please enter a valid email</p>
           </ion-item>
               <ion-item>
                 <ion-label position="floating" style="color:#382574;">First Name</ion-label>
-                  <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"></ion-input>
+                  <ion-input formControlName="firstname" type="text" [class.invalid]="!slideOneForm.controls.firstname.valid && (slideOneForm.controls.firstname.dirty || submitAttempt)"></ion-input>
               </ion-item>
-              <ion-item *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">
+              <ion-item *ngIf="!slideOneForm.controls.firstname.valid  && (slideOneForm.controls.firstname.dirty || submitAttempt)">
                   <p>Please enter a valid name.</p>
               </ion-item>
               <ion-item>
                 <ion-label position="floating" style="color:#382574;">Last Name</ion-label>
-                  <ion-input formControlName="lastName" type="text" [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.email.dirty || submitAttempt)"></ion-input>
+                  <ion-input formControlName="lastname" type="text" [class.invalid]="!slideOneForm.controls.lastname.valid && (slideOneForm.controls.email.dirty || submitAttempt)"></ion-input>
               </ion-item>
-              <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
+              <ion-item *ngIf="!slideOneForm.controls.lastname.valid  && (slideOneForm.controls.lastname.dirty || submitAttempt)">
                   <p>Please enter a valid name.</p>
               </ion-item>
               <ion-buttons>
