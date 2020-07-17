@@ -13,12 +13,10 @@ export class MobileMoneyAddPage implements OnInit {
   constructor(public apiService: ApiService,
               public router: Router) {this.data = new Mobilemoney(); }
 
-  ngOnInit() {
+  ngOnInit() {}
 
-
-  }
   submitForm() {
-    this.apiService.createItem(this.data).subscribe((response) => {
+    this.apiService.createItemMobileMoney(this.data).subscribe((response) => {
       this.router.navigate(['payment']);
     });
 
