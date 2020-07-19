@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from  './auth/auth.module';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     AuthModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCgUWjd50DeZOIrzNfFyuoNs12aquKMb-U',
+      libraries: ['places']
+    })
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,4 @@
-
- <ion-content>
+  <ion-content>
   <h1>  <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
   </ion-buttons></h1>
@@ -8,16 +7,26 @@
       </ion-text>
       <form [formGroup]="directionForm" (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
       <ion-list>
-                <ion-item>
-                  <ion-label position="floating">Where are you? <ion-text color="danger">*</ion-text></ion-label>
-                  <ion-input required type="text" oninput="handleplaceValue(event)"formControlName="source"></ion-input>
-                </ion-item>
+                  <ion-item>
+             <ion-label position="floating">Where are you? <ion-text color="danger">*</ion-text></ion-label>
+
+             <input required type="text" id="native-input sc-ion-input-ios"
+                   (keydown.enter)="$event.preventDefault()" formControlName="source"
+                    autocorrect="off" autocapitalize="off" spellcheck="off"  type="text" #search >
+
+                    </ion-item>
                 <ion-item>
                   <ion-label position="floating">Where are you going? <ion-text color="danger">*</ion-text></ion-label>
-                  <ion-input required type="text" oninput="handleplaceValue(event)"formControlName="destination"></ion-input>
+                 <!-- <ion-input required type="text"  oninput="handleplaceValue(event)"formControlName="destination"></ion-input> -->
+                 <input required type="text" class="native-input sc-ion-input-ios"
+                 (keydown.enter)="$event.preventDefault()" formControlName="destination"
+                  autocorrect="off" autocapitalize="off" spellcheck="off"  type="text" #destination >
                 </ion-item>
+
              </ion-list>
-             <ion-button expand="block"type="submit" [disabled]="directionForm.invalid">SEARCH</ion-button>
+              <ion-button expand="block"type="submit" [disabled]="directionForm.invalid">SEARCH</ion-button>
             </form>
 </ion-content>
+
+
 
