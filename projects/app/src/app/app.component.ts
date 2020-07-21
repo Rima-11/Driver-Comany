@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -37,7 +38,9 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public alertController: AlertController,
+    private router: Router
   ) {
     this.initializeApp();
   }
@@ -54,5 +57,31 @@ export class AppComponent implements OnInit {
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+  }
+  async logout() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Logout ?',
+      message: 'You are logging out',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            console.log('Confirm Okay');
+            localStorage.clear();
+            this.router.navigate(['login']);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }
