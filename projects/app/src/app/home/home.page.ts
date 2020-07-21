@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
+import { Storage } from  '@ionic/storage';
 
 declare var google: any;
 
@@ -11,10 +12,19 @@ declare var google: any;
 export class HomePage {
     map: any;
     baseUrl = 'assets/image.png/';
-    constructor(public geolocation: Geolocation) {
+    firstname : string;
+    constructor(public geolocation: Geolocation, private storage: Storage) {
+      this.loadMap();
+
     }
     ngOnInit() {
-      this.loadMap();
+
+      console.log(this.storage);
+      this.storage.get("firstname").then((valeur ) => {
+      console.log(valeur);
+       this.firstname = valeur;
+        });
+
     }
     loadMap() {
         this.geolocation.getCurrentPosition().then((resp) => {

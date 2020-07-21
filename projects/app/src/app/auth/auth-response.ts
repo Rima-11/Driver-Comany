@@ -1,6 +1,6 @@
 export interface AuthResponse {
   user: {
-      name: string,
+      firstname: string,
       phone: number,
       password: string,
       access_token: string,
