@@ -31,14 +31,9 @@ export class AppComponent implements OnInit {
       title: 'Settings',
       url: '/settings',
       icon: 'settings'
-    },
-    {
-      title: 'Logout',
-      url: '/folder/logout',
-      icon: 'exit'
     }
   ];
-  
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
