@@ -1,8 +1,12 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title class="ion-text-center">
-      <ion-icon name="create"></ion-icon> Sign Up
-    </ion-title>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/signup" style="color: white;"></ion-back-button>
+      </ion-buttons>
+      <ion-title text-center>
+          <h1 class="centered-title ion-text-center">
+              <ion-icon name="create"></ion-icon>Singn up </h1>
+      </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -53,7 +57,7 @@
           </ion-radio-group>
           <ion-buttons>
             <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
-            <ion-button (click)="next($event)" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+            <ion-button (click)="next($event)" [disabled]="verifAccount()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
           </ion-buttons>
           </form>
       </ion-list>
@@ -84,7 +88,7 @@
               </ion-item>
               <ion-buttons>
                 <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
-                <ion-button (click)="next($event)" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+                <ion-button (click)="next($event)" [disabled]="verifUser()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
               </ion-buttons>
           </form>
       </ion-list>
@@ -106,7 +110,7 @@
             </ion-item>
             <ion-buttons>
               <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
-              <ion-button (click)="next($event)" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+              <ion-button (click)="next($event)" [disabled]="verifAddress()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
             </ion-buttons>
           </form>
         </ion-list>

@@ -1,8 +1,6 @@
 
 ion-header ion-toolbar{
   --background: var(--ion-item-background, var(--ion-background-color, #382574));
- margin-bottom:65px;
-
 }
 ion-toolbar ion-icon{
 color: white;
@@ -11,7 +9,9 @@ ion-title {
 color:white;
 font-size: 30px;
 }
-
+.margin-form{
+  margin-top: 80px;
+}
 ion-item {
 margin-top:20px;
 margin-bottom:30px;
@@ -35,10 +35,13 @@ ion-checkbox {
  background-color:#382574;
 }
 
+h1 {
+  width: 200px;
+}
 .ion-text-center{
-color: rgb(216, 12, 12);
+color: white;
 font-size: 17px;
-margin-bottom: 30px;
+
 }
 .ion-float-right{
   margin-top:7.5px;

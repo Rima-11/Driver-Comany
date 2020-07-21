@@ -2,5 +2,20 @@
   "mobilemoneys": [],
   "paypals": [],
   "creditCards": [],
-  "users": []
+  "users": [
+    {
+      "firstname": "sabrine",
+      "lastname": "ben",
+      "email": "sabrine@gg.g",
+      "phone": "24612088",
+      "accountType": "Client",
+      "code": "123",
+      "zip": "6014",
+      "town": "gabes",
+      "country": "tunis",
+      "password": "sa",
+      "Confirmpassword": "sa",
+      "id": 1
+    }
+  ]
 }

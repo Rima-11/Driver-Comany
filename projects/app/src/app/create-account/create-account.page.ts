@@ -45,7 +45,7 @@ export class CreateAccountPage implements OnInit {
       Validators.required])],
     country:['',Validators.compose([
       Validators.required])],
-    password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
+    password: ['', Validators.compose([Validators.required])],
     Confirmpassword:['',[Validators.required,this.equalto('password')]]
     // person:['',]
 });
@@ -127,6 +127,37 @@ verifPhone() {
     return false;
   }
 }
+
+verifAccount() {
+  if (this.slideOneForm.value.accountType.length === 0)
+  {
+   return true ;
+  }
+  else {
+    return false;
+  }
+}
+
+verifUser() {
+  if ((this.slideOneForm.value.email.length === 0) || (this.slideOneForm.value.firstname.length === 0) || (this.slideOneForm.value.lastname.length === 0))
+  {
+   return true ;
+  }
+  else {
+    return false;
+  }
+}
+
+verifAddress() {
+  if ((this.slideOneForm.value.zip.length === 0) || (this.slideOneForm.value.town.length === 0) || (this.slideOneForm.value.country.length === 0))
+  {
+   return true ;
+  }
+  else {
+    return false;
+  }
+}
+
 //verify code 
 
 verifyCode(value:string) {

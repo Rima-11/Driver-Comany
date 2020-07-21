@@ -18,11 +18,10 @@ export class SettingsPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log('onIti')
+    
   }
 
   ionViewWillEnter() {
-    console.log('2 ionview')
     // Used ionViewWillEnter as ngOnInit is not 
     // called due to view persistence in Ionic
     const id = this.activatedRoute.snapshot.params["id"] ?? 1;
@@ -30,7 +29,7 @@ export class SettingsPage implements OnInit {
   }
   
   getProfile(id:number) {
-    //Get saved list of students
+    //Get saved list of profile
     this.apiService. getItem(id).subscribe(response => {
       console.log(response);
       this.profilesData = response;
