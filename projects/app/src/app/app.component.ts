@@ -76,7 +76,7 @@ export class AppComponent implements OnInit {
           handler: () => {
             console.log('Confirm Okay');
             localStorage.clear();
-            this.router.navigate(['login']);
+            this.router.navigate(['signup']);
           }
         }
       ]
