@@ -63,6 +63,8 @@ ion-label {
   
  }
 .error {
+    display:block;
+    margin-top:20px;
     color: red;
 }
 .bouton-create {
@@ -73,4 +75,8 @@ ion-label {
 
 .pass-back{
     margin-left: 20px;
+}
+
+.item-ligne {
+    color:red;
 }
