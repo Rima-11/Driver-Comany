@@ -1,7 +1,12 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-   <a routerLink="/settings"><ion-icon name="arrow-back"></ion-icon></a>
-    <ion-title class="ion-text-center"> <ion-icon name="person"></ion-icon>Profil</ion-title>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/settings" style="color: white;"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center">
+          <h1 class="centered-title">
+              <ion-icon name="person"></ion-icon> Profil</h1>
+      </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>

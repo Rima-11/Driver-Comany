@@ -1,8 +1,12 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title class="ion-text-center">
-      <ion-icon name="create"></ion-icon> Sign Up
-    </ion-title>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/signup" style="color: white;"></ion-back-button>
+      </ion-buttons>
+      <ion-title text-center>
+          <h1 class="centered-title ion-text-center">
+              <ion-icon name="create"></ion-icon>Singn up </h1>
+      </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,6 +19,9 @@
           <ion-label position="floating" style="color:#382574;">Phone</ion-label>
           <ion-input formControlName="phone" type="phone" [class.invalid]="!slideOneForm.controls.phone.valid && (slideOneForm.controls.phone.dirty || submitAttempt)"></ion-input>
         </ion-item>
+        <span *ngIf="!slideOneForm.controls.phone.valid  && (slideOneForm.controls.phone.dirty || slideOneForm.controls.phone.touched)">
+          <p style="color: red;">Enter your phone</p>
+        </span>
         <ion-buttons slot="end">
           <ion-button [disabled]="verifPhone()"  (click)="next($event)" id="phone" style="--background:#382574;" class="arrow-forward next-phone">Next<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
         </ion-buttons>
@@ -28,6 +35,9 @@
             <ion-label position="floating" style="color:#382574;">Code</ion-label>
             <ion-input  #code (keyup)="verifyCode(code.value)" formControlName="code" type="text" [class.invalid]="!slideOneForm.controls.code.valid && (slideOneForm.controls.code.dirty || submitAttempt)"></ion-input>
           </ion-item>
+          <span *ngIf="!slideOneForm.controls.code.valid  && (slideOneForm.controls.code.dirty || slideOneForm.controls.code.touched)">
+            <p style="color: red;">Enter the code</p>
+          </span>
           <ion-buttons>
             <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
             <ion-button  [disabled]="disabled" id="code" style="--background:#382574;" class="arrow-forward" (click)="next($event)">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
@@ -53,7 +63,7 @@
           </ion-radio-group>
           <ion-buttons>
             <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
-            <ion-button (click)="next($event)" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+            <ion-button (click)="next($event)" [disabled]="verifAccount()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
           </ion-buttons>
           </form>
       </ion-list>
@@ -65,26 +75,26 @@
               <ion-label position="floating" style="color:#382574;">Email</ion-label>
               <ion-input formControlName="email" type="email" [class.invalid]="!slideOneForm.controls.email.valid && (slideOneForm.controls.email.dirty || submitAttempt)"></ion-input>
           </ion-item>
-          <ion-item *ngIf="!slideOneForm.controls.lastname.valid  && (slideOneForm.controls.lastname.dirty || submitAttempt)">
-              <p>Please enter a valid email</p>
-          </ion-item>
+          <span *ngIf="!slideOneForm.controls.email.valid  && (slideOneForm.controls.email.dirty || submitAttempt)">
+            <p style="color: red;">Email not valid</p>
+          </span>
               <ion-item>
                 <ion-label position="floating" style="color:#382574;">First Name</ion-label>
                   <ion-input formControlName="firstname" type="text" [class.invalid]="!slideOneForm.controls.firstname.valid && (slideOneForm.controls.firstname.dirty || submitAttempt)"></ion-input>
               </ion-item>
-              <ion-item *ngIf="!slideOneForm.controls.firstname.valid  && (slideOneForm.controls.firstname.dirty || submitAttempt)">
-                  <p>Please enter a valid name.</p>
-              </ion-item>
+              <span *ngIf="!slideOneForm.controls.firstname.valid  && (slideOneForm.controls.firstname.dirty || submitAttempt)">
+                  <p style="color: red;">Please enter your first name.</p>
+              </span>
               <ion-item>
                 <ion-label position="floating" style="color:#382574;">Last Name</ion-label>
                   <ion-input formControlName="lastname" type="text" [class.invalid]="!slideOneForm.controls.lastname.valid && (slideOneForm.controls.email.dirty || submitAttempt)"></ion-input>
               </ion-item>
-              <ion-item *ngIf="!slideOneForm.controls.lastname.valid  && (slideOneForm.controls.lastname.dirty || submitAttempt)">
-                  <p>Please enter a valid name.</p>
-              </ion-item>
+              <span *ngIf="!slideOneForm.controls.lastname.valid  && (slideOneForm.controls.lastname.dirty || submitAttempt)">
+                  <p style="color: red;">Please enter your last name.</p>
+              </span>
               <ion-buttons>
                 <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
-                <ion-button (click)="next($event)" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+                <ion-button (click)="next($event)" [disabled]="verifUser()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
               </ion-buttons>
           </form>
       </ion-list>
@@ -96,17 +106,26 @@
               <ion-label position="floating" style="color:#382574;">Zip</ion-label>
               <ion-input formControlName="zip" type="text" [class.invalid]="!slideOneForm.controls.zip.valid && (slideOneForm.controls.zip.dirty || submitAttempt)"></ion-input>
             </ion-item>
+            <span *ngIf="!slideOneForm.controls.zip.valid  && (slideOneForm.controls.zip.dirty || submitAttempt)">
+              <p style="color: red;">Please enter your code zip.</p>
+          </span>
             <ion-item>
               <ion-label position="floating" style="color:#382574;">Town</ion-label>
               <ion-input formControlName="town" type="text" [class.invalid]="!slideOneForm.controls.town.valid && (slideOneForm.controls.town.dirty || submitAttempt)"></ion-input>
             </ion-item>
+            <span *ngIf="!slideOneForm.controls.town.valid  && (slideOneForm.controls.town.dirty || submitAttempt)">
+              <p style="color: red;">Please enter your town.</p>
+          </span>
             <ion-item>
               <ion-label position="floating" style="color:#382574;">Country</ion-label>
               <ion-input formControlName="country" type="text" [class.invalid]="!slideOneForm.controls.country.valid && (slideOneForm.controls.country.dirty || submitAttempt)"></ion-input>
             </ion-item>
+            <span *ngIf="!slideOneForm.controls.country.valid  && (slideOneForm.controls.country.dirty || submitAttempt)">
+              <p style="color: red;">Please enter your country.</p>
+          </span>
             <ion-buttons>
               <ion-button (click)="prev()" style="--background:#382574;" class="arrow-back"><ion-icon name="arrow-back"></ion-icon> Prev</ion-button>
-              <ion-button (click)="next($event)" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
+              <ion-button (click)="next($event)" [disabled]="verifAddress()" style="--background:#382574;" class="arrow-forward">Next <ion-icon name="arrow-forward"></ion-icon></ion-button>
             </ion-buttons>
           </form>
         </ion-list>
@@ -118,9 +137,9 @@
                 <ion-label position="floating" style="color:#382574;">New Password</ion-label>
                   <ion-input [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)" formControlName="password" type="password"></ion-input>
               </ion-item>
-              <ion-item *ngIf="slideOneForm.controls.password.pending">
+              <span *ngIf="slideOneForm.controls.password.pending">
                   <p>Checking password...</p>
-              </ion-item>
+              </span>
               <ion-item>
                 <ion-label position="floating" style="color:#382574;">Confirm Password</ion-label>
                 <ion-input [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)" formControlName="Confirmpassword" type="password"></ion-input>

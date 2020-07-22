@@ -50,7 +50,6 @@ export class ApiService {
         catchError(this.handleError)
       )
  }
-
   // Get Profile data
   getList(): Observable<Profile> {
     return this.http

@@ -22,7 +22,6 @@ export class CreateAccountPage implements OnInit {
   phoneData={
     phone:''
   };
-
   constructor(public formBuilder: FormBuilder,private http:HttpClient, private router: Router) {}
 
  ngOnInit() {
@@ -34,18 +33,18 @@ export class CreateAccountPage implements OnInit {
       Validators.required,
       Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
     ])],
-    phone:['',Validators.compose([Validators.required])],
+    phone:['',Validators.compose([Validators.required,Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$'),Validators.minLength(8)])],
     accountType:['',Validators.compose([
       Validators.required])],
     code:['',Validators.compose([
-        Validators.required])],
+        Validators.required,Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')])],
     zip :['',Validators.compose([
-      Validators.required])],
+      Validators.required,Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$'),Validators.maxLength(5)])],
     town:['',Validators.compose([
       Validators.required])],
     country:['',Validators.compose([
       Validators.required])],
-    password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
+    password: ['', Validators.compose([Validators.required])],
     Confirmpassword:['',[Validators.required,this.equalto('password')]]
     // person:['',]
 });
@@ -126,6 +125,39 @@ verifPhone() {
   else {
     return false;
   }
+}
+
+verifAccount() {
+  if (this.slideOneForm.value.accountType.length === 0)
+  {
+   return true ;
+  }
+  else {
+    return false;
+  }
+}
+
+verifUser() {
+  if ((this.slideOneForm.value.email.length === 0) || (this.slideOneForm.value.firstname.length === 0) || (this.slideOneForm.value.lastname.length === 0))
+  {
+   return true ;
+  }
+  else {
+    return false;
+  }
+}
+
+verifAddress() {
+  if ((this.slideOneForm.value.zip.length === 0) || (this.slideOneForm.value.town.length === 0) || (this.slideOneForm.value.country.length === 0))
+  {
+   return true ;
+  }
+  else {
+    return false;
+  }
+}
+get errorControl() {
+  return this.slideOneForm.controls;
 }
 //verify code 
 
