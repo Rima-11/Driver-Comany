@@ -1,3 +1,3 @@
-{"users":[{"id":1,"firstname":"wafa", "phone":27937224,"password":"wafa"},
+{"users":[{"id":1,"firstname":"wafa","lastname":"SALEH","country":"Tunisia","town":"Gafsa","phone":27937224,"password":"wafa"},
   {"id":2, "firstname":"Ali","phone":27937225,"password":"wafaa"},
   {"id":3, "firstname":"Ahmed","phone":27937226,"password":"wafaaa"}]}

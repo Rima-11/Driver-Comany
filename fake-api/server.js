@@ -99,7 +99,10 @@ server.post('/auth/login', (req, res) => {
     const access_token = createToken({phone, password})
     console.log("Access Token:" + access_token);
     console.log("remember:" + remember);
-     user = {access_token: access_token, phone: phone, remember: remember, firstname: userConnected.firstname};
+     user = {access_token: access_token, phone: phone, remember: remember, firstname: userConnected.firstname,
+      lastname: userConnected.lastname,
+      town: userConnected.town,
+      country: userConnected.country};
 
     res.status(200).json({ user })
 

@@ -29,6 +29,9 @@ console.log(this.storage);
           await this.storage.set("remember" , res.user.remember);
           await this.storage.set("phone" , res.user.phone);
           await this.storage.set("firstname" , res.user.firstname);
+          await this.storage.set("lastname" , res.user.lastname);
+          await this.storage.set("town" , res.user.town);
+          await this.storage.set("country" , res.user.country);
           this.authSubject.next(true);}
 
       })
