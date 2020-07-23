@@ -13,12 +13,10 @@ export class HomePage {
     map: any;
     baseUrl = 'assets/image.png/';
     firstname : string;
-    constructor(public geolocation: Geolocation, private storage: Storage) {
-      this.loadMap();
-
-    }
+    constructor(public geolocation: Geolocation, private storage: Storage) {}
+    
     ngOnInit() {
-
+      this.loadMap();
       console.log(this.storage);
       this.storage.get("firstname").then((valeur ) => {
       console.log(valeur);
