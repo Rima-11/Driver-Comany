@@ -14,7 +14,6 @@ import { HttpClient } from '@angular/common/http';
 
 export class PasswordPage implements OnInit {
   profilesData: any;
-
   user: Profile;
   password:string;
   passwordForm: any;
