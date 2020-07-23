@@ -4,7 +4,7 @@
   "creditCards": [],
   "users": [
     {
-      "firstname": "sabrine",
+      "firstname": "bina",
       "lastname": "ben",
       "email": "sabrine@gg.g",
       "phone": "24612088",
@@ -16,6 +16,20 @@
       "password": "sa",
       "Confirmpassword": "sa",
       "id": 1
+    },
+    {
+      "firstname": "sab",
+      "lastname": "ben",
+      "email": "fff@hhhh",
+      "phone": "222222222",
+      "accountType": "Client",
+      "code": "123",
+      "zip": "222",
+      "town": "gggg",
+      "country": "gggg",
+      "password": "cc",
+      "Confirmpassword": "cc",
+      "id": 2
     }
   ]
 }

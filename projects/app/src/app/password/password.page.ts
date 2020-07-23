@@ -14,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class PasswordPage implements OnInit {
   profilesData: any;
-  id: number;
+
   user: Profile;
   password:string;
   passwordForm: any;
@@ -26,7 +26,7 @@ export class PasswordPage implements OnInit {
     this.passwordForm = this.formBuilder.group({
       password: ['', Validators.compose([Validators.required])],
       newPassword:['', Validators.compose([Validators.required])],
-    Confirmpassword:['',[Validators.required]]
+    confirmpassword:['',[Validators.required]]
     })
   }
  verifyPassword(){

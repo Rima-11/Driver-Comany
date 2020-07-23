@@ -6,7 +6,7 @@ import { PasswordPageRoutingModule } from './password-routing.module';
 import { PasswordPage } from './password.page';
 import { ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-
+import { FormGroup } from '@angular/forms'
 @NgModule({
   imports: [
     CommonModule,
@@ -14,7 +14,8 @@ import {HttpClientModule} from '@angular/common/http';
     IonicModule,
     PasswordPageRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormGroup
   ],
   declarations: [PasswordPage]
 })
