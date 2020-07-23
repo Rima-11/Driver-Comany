@@ -18,22 +18,22 @@ export class HomePage implements OnInit {
     directionsService = new google.maps.DirectionsService;
 directionsDisplay = new google.maps.DirectionsRenderer;
 directionForm: FormGroup;
-//public latitude: number;
-//public longitude: number;
 public searchControl: FormControl;
 public destinationControl: FormControl;
-//public zoom: number;
+
 title: string = 'AGM project';
 latitude: number;
 longitude: number;
 zoom: number;
 address: string;
 private geoCoder;
+private place;
 
 @ViewChild('search',{static:false})
 public searchElementRef: ElementRef;
 @ViewChild('destination',{static:false})
 public destinationElementRef: ElementRef;
+
 
 createDirectionForm() {
   this.directionForm = this.fb.group({
@@ -42,13 +42,16 @@ createDirectionForm() {
   });
 }
     constructor(public geolocation: Geolocation, private fb: FormBuilder,public navCtrl: NavController, private mapsAPILoader: MapsAPILoader,
-      private ngZone: NgZone) {   this.createDirectionForm(),  this.loadMap();;
+      private ngZone: NgZone )
+       {
       //create search and destination FormControl
      this.searchControl = new FormControl();
      this.destinationControl = new FormControl();
 
   }
   ngOnInit() {
+    this.createDirectionForm();
+     this.loadMap() ;
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -104,6 +107,7 @@ this.mapsAPILoader.load().then(() => {
   });
 });
 
+
   }
 
   // Get Current Location Coordinates
@@ -141,6 +145,7 @@ this.mapsAPILoader.load().then(() => {
       }
 
     });
+
 }
     loadMap() {
         this.geolocation.getCurrentPosition().then((resp) => {
@@ -154,28 +159,13 @@ this.mapsAPILoader.load().then(() => {
                 mapTypeControl: false
             });
             this.directionsDisplay.setMap(this.map);
-           this.addMyPosition(latLng);
+            this.addMyPosition(latLng);
             this.addHousePosition();
             this.addCarPosition();
 
        });
-    }
-    calculateAndDisplayRoute(formValues) {
-      const that = this;
-      this.directionsService.route({
-        origin: formValues.source,
-        destination: formValues.destination,
-        travelMode: 'DRIVING'
-      }, (response, status) => {
-        if (status === 'OK') {
-          that.directionsDisplay.setDirections(response);
-        } else {
-          window.alert('Directions request failed due to ' + status);
-        }
-      });
-    }
 
-
+    }
     addMyPosition(latLng) {
         const marker = new google.maps.Marker({
             map: this.map,
@@ -221,6 +211,20 @@ this.mapsAPILoader.load().then(() => {
         });
         this.addInfoWindowToMarker(marker);
     }
+    calculateAndDisplayRoute(formValues) {
+      const that = this;
+      this.directionsService.route({
+        origin: formValues.source,
+        destination: formValues.destination,
+        travelMode: 'DRIVING'
+      }, (response, status) => {
+        if (status === 'OK') {
+          that.directionsDisplay.setDirections(response);
+        } else {
+          window.alert('Directions request failed due to ' + status);
+        }
+      });
+    }
     addInfoWindowToMarker(marker) {
         const infoWindowContent = '<div id="content">' + marker.title + '</div>';
         const infoWindow = new google.maps.InfoWindow({
@@ -230,4 +234,5 @@ this.mapsAPILoader.load().then(() => {
             infoWindow.open(this.map, marker);
         });
     }
+
   }
