@@ -1,10 +1,10 @@
 // api.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Mobilemoney } from '../models/Mobilemoney';
+import { Mobilemoney } from '../models/mobilemoney';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { Paypal } from '../models/Paypal';
+import { Paypal } from '../models/paypal';
 import { CreditCard } from '../models/credit-card';
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class ApiService {
   // tslint:disable-next-line: variable-name
   base_path = 'http://localhost:3000/mobilemoneys';
   // tslint:disable-next-line: variable-name
-  base_path1 = 'http://localhost:3000/Paypals';
+  base_path1 = 'http://localhost:3000/paypals';
   // tslint:disable-next-line: variable-name
   base_path2 = 'http://localhost:3000/creditCards';
 
@@ -24,7 +24,7 @@ export class ApiService {
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     })
   };
 

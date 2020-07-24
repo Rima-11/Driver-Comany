@@ -1,17 +1,17 @@
-const fs = require('fs')
-const bodyParser = require('body-parser')
-const jsonServer = require('json-server')
-const jwt = require('jsonwebtoken')
+const fs = require('fs');
+const bodyParser = require('body-parser');
+const jsonServer = require('json-server');
+const jwt = require('jsonwebtoken');
 
-const server = jsonServer.create()
-const router = jsonServer.router('./database.json')
-const userdb = JSON.parse(fs.readFileSync('./users.json', 'UTF-8'))
+const server = jsonServer.create();
+const router = jsonServer.router('./database.json');
+const userdb = JSON.parse(fs.readFileSync('./db.json', 'UTF-8'));
 
-server.use(bodyParser.urlencoded({extended: true}))
-server.use(bodyParser.json())
+server.use(bodyParser.urlencoded({extended: true}));
+server.use(bodyParser.json());
 server.use(jsonServer.defaults());
 
-const SECRET_KEY = '123456789'
+const SECRET_KEY = '123456789';
 
 const expiresIn = '1h'
 var userConnected ;
@@ -52,7 +52,7 @@ server.post('/auth/register', (req, res) => {
     return
   }
 
-fs.readFile("./users.json", (err, data) => {
+fs.readFile("./db.json", (err, data) => {
     if (err) {
       const status = 401
       const message = err
@@ -62,13 +62,13 @@ fs.readFile("./users.json", (err, data) => {
 
     // Get current users data
     var data = JSON.parse(data.toString());
-
+console.log(data);
     // Get the id of last user
     var last_item_id = data.users[data.users.length-1].id;
 
     //Add new user
     data.users.push({id: last_item_id + 1, phone: phone, password: password}); //add some data
-    var writeData = fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  // WRITE
+    var writeData = fs.writeFile("./db", JSON.stringify(data), (err, result) => {  // WRITE
         if (err) {
           const status = 401
           const message = err
@@ -84,7 +84,7 @@ fs.readFile("./users.json", (err, data) => {
   res.status(200).json({access_token})
 })
 
-// Login to one of the users from ./users.json
+// Login to one of the users from ./db
 server.post('/auth/login', (req, res) => {
   console.log("login endpoint called; request body:");
   console.log(req.body);
@@ -95,14 +95,22 @@ server.post('/auth/login', (req, res) => {
     res.status(status).json({status, message})
     return
   }
+    const playload = {password: password, phone: phone, remember: remember, firstname: userConnected.firstname,
+      lastname: userConnected.lastname,
+      town: userConnected.town,
+      country: userConnected.country,
+      id: userConnected.id};
 
-    const access_token = createToken({phone, password})
+    const access_token = createToken({playload});
+
     console.log("Access Token:" + access_token);
     console.log("remember:" + remember);
+    
      user = {access_token: access_token, phone: phone, remember: remember, firstname: userConnected.firstname,
       lastname: userConnected.lastname,
       town: userConnected.town,
-      country: userConnected.country};
+      country: userConnected.country,
+      id: userConnected.id};
 
     res.status(200).json({ user })
 

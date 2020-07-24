@@ -12,7 +12,7 @@
     <ion-item >
       <ion-label [ngClass]="{ 'has-error':  isSubmitted  && formControls.phone.errors }" position="floating">Phone<ion-text color="danger">*</ion-text></ion-label>
       <!-- <ion-input type="number" formControlName="phone" [class.invalid]="!loginForm.controls.phone.valid && (loginForm.controls.phone.dirty ||  isSubmitted )"></ion-input> -->
-      <ion-input type="number"  formControlName="phone"> </ion-input>
+      <ion-input type="text"  formControlName="phone"> </ion-input>
     </ion-item>
      <div *ngIf=" isSubmitted  && formControls.phone.errors" class="help-block">
       <div *ngIf="formControls.phone.errors.required" > <h6> Phone is required ! </h6></div>
