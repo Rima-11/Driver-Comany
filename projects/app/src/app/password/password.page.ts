@@ -37,7 +37,7 @@ export class PasswordPage implements OnInit {
     }
   }
 
-  onSave() {
+  onSubmit() {
     // To save the passwordForm values
     console.log('this.passwordForm.value', this.passwordForm.value);
   }
