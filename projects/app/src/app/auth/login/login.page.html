@@ -1,9 +1,13 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-icon  name="arrow-back"></ion-icon>
-  <ion-title class="ionic-text-center"> <ion-icon name="log-in-outline"></ion-icon> Login</ion-title>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="" style="color: white;"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center">
+        <h1><ion-icon name="log-in-outline"></ion-icon> Login</h1>
+      </ion-title>
   </ion-toolbar>
-  </ion-header>
+</ion-header>
 
   <ion-content>
     <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
@@ -11,21 +15,19 @@
     <ion-list>
     <ion-item >
       <ion-label [ngClass]="{ 'has-error':  isSubmitted  && formControls.phone.errors }" position="floating">Phone<ion-text color="danger">*</ion-text></ion-label>
-      <!-- <ion-input type="number" formControlName="phone" [class.invalid]="!loginForm.controls.phone.valid && (loginForm.controls.phone.dirty ||  isSubmitted )"></ion-input> -->
       <ion-input type="text"  formControlName="phone"> </ion-input>
     </ion-item>
-     <div *ngIf=" isSubmitted  && formControls.phone.errors" class="help-block">
-      <div *ngIf="formControls.phone.errors.required" > <h6> Phone is required ! </h6></div>
-    </div>
+    <span *ngIf=" !loginForm.controls.phone.valid && (loginForm.controls.phone.dirty || loginForm.controls.phone.touched)">
+      <p style="color: rgb(216, 12, 12);">Enter your phone</p>
+    </span>
     <ion-item>
       <ion-label [ngClass]="{ 'has-error':  isSubmitted  && formControls.password.errors }" position="floating">Password<ion-text color="danger">*</ion-text>
-
       </ion-label>
       <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
-     <div *ngIf=" isSubmitted  && formControls.password.errors" class="help-block">
-      <div *ngIf="formControls.password.errors.required"> <h6>Password is required !</h6></div>
-    </div>
+    <span *ngIf=" !loginForm.controls.password.valid&& (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+      <p style="color: rgb(216, 12, 12);">Enter your password</p>
+    </span>
      </ion-list>
     </div>
      <div class="form-group">

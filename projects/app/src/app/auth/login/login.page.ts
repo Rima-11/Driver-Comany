@@ -23,9 +23,8 @@ export class LoginPage implements OnInit {
   remember:boolean;
   ngOnInit() {
     this.loginForm  =  this.formBuilder.group({
-      phone :['',Validators.compose([Validators.minLength(8),
-        Validators.required,])],
-        password :['',Validators.compose([Validators.required])],
+      phone:['',Validators.compose([Validators.required,Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')])],
+      password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
         remember :['']
     });
  console.log(this.storage);
