@@ -34,7 +34,6 @@ export class ResetPasswordPage implements OnInit {
       phone:['',Validators.compose([Validators.required])],
       code:['',Validators.compose([
         Validators.required])],
-
       password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
       confirmPassword:['',[Validators.required,this.equalto('password')]]
     });
