@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Profile } from '../models/profile';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -16,7 +16,7 @@ export class PasswordPage implements OnInit {
   profilesData: any;
   user: Profile;
   password:string;
-  passwordForm: any;
+  passwordForm: FormGroup;
   constructor(public apiService: ApiService, public activatedRoute: ActivatedRoute,public formBuilder: FormBuilder,private http:HttpClient, private router: Router) { 
     this.user = new Profile;
   }
@@ -25,14 +25,20 @@ export class PasswordPage implements OnInit {
     this.passwordForm = this.formBuilder.group({
       password: ['', Validators.compose([Validators.required])],
       newPassword:['', Validators.compose([Validators.required])],
-    confirmpassword:['',[Validators.required]]
+      confirmpassword:['',[Validators.required]]
     })
   }
- verifyPassword(){
-if(this.passwordForm.password.value === this.user.password)
-{
-console.log(this.passwordForm.password.value);
-console.log(this.user.password)
-}
- }
+  
+  verifyPassword() {
+    if(this.passwordForm.value === this.user.password)
+    {
+      console.log(this.passwordForm.value);
+      console.log(this.user.password)
+    }
+  }
+
+  onSave() {
+    // To save the passwordForm values
+    console.log('this.passwordForm.value', this.passwordForm.value);
+  }
 }
