@@ -2,5 +2,35 @@
   "mobilemoneys": [],
   "paypals": [],
   "creditCards": [],
-  "users": []
+  "users": [
+    {
+      "firstName": "Ali",
+      "lastName": "Ali",
+      "email": "ali@gmail.com",
+      "phone": "27937225",
+      "accountType": "Client",
+      "code": "123",
+      "zip": "5000",
+      "town": "Monastir",
+      "country": "Tunisia",
+      "password": "aaa",
+      "Confirmpassword": "ali",
+      "id": 2,
+      "confirmPassword": "aaa"
+    },
+    {
+      "firstName": "aaa",
+      "lastName": "aaa",
+      "email": "aaa@gmail.com",
+      "phone": "27937226",
+      "accountType": "Client",
+      "code": "123",
+      "zip": "111",
+      "town": "aaa",
+      "country": "aaa",
+      "password": "aaaaa",
+      "Confirmpassword": "aaaaa",
+      "id": 3
+    }
+  ]
 }

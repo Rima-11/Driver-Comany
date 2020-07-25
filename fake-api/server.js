@@ -105,7 +105,7 @@ server.post('/auth/login', (req, res) => {
 
     console.log("Access Token:" + access_token);
     console.log("remember:" + remember);
-    
+
      user = {access_token: access_token, phone: phone, remember: remember, firstname: userConnected.firstname,
       lastname: userConnected.lastname,
       town: userConnected.town,
@@ -142,9 +142,9 @@ server.use(/^(?!\/auth).*$/,  (req, res, next) => {
 })
 server.use(router)
 
-server.listen(3001, () => {
+  server.listen(3001, () => {
   console.log('Run Auth API Server')
-})
+  })
 
 
 

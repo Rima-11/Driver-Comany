@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import {Validators,ValidatorFn, AbstractControl} from '@angular/forms';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.page.html',
@@ -26,14 +27,14 @@ export class ResetPasswordPage implements OnInit {
   };
    id='';
    errorMessage = '';
+
   constructor(public formBuilder: FormBuilder,private http:HttpClient, private router: Router) {}
 
  userData: any = {};
   ngOnInit() {
     this.slideOneForm = this.formBuilder.group({
-      phone:['',Validators.compose([Validators.required])],
-      code:['',Validators.compose([
-        Validators.required])],
+      phone:['',Validators.compose([Validators.required,Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')])],
+      code:['',Validators.compose([ Validators.required,Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')])],
 
       password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
       confirmPassword:['',[Validators.required,this.equalto('password')]]
@@ -80,9 +81,9 @@ prev(){
   else {
     let url="http://localhost:3000/users";
     console.log(this.slideOneForm.value);
-    this.http.put(url + "/" + this.id ,this.slideOneForm.value).toPromise().then((data:any)=>{
+    this.http.patch(url + "/" + this.id ,this.slideOneForm.value).toPromise().then((data:any)=>{
 
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
 
     });
 }
@@ -119,12 +120,12 @@ else {
 }
 //verify code
 
-verifyCode(value:string) {
-if (this.code === value) {
- this.disabled = false ;
-}
-else {
-  this.disabled = true ;
-}
+  verifyCode(value:string) {
+  if (this.code === value) {
+   this.disabled = false ;
+  }
+  else {
+    this.disabled = true ;
+  }
 }
 }
