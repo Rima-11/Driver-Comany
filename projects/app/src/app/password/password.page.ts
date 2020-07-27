@@ -14,11 +14,9 @@ import { HttpClient } from '@angular/common/http';
 
 export class PasswordPage implements OnInit {
   profilesData: any;
-  user: Profile;
   password:string;
   passwordForm: FormGroup;
   constructor(public apiService: ApiService, public activatedRoute: ActivatedRoute,public formBuilder: FormBuilder,private http:HttpClient, private router: Router) { 
-    this.user = new Profile;
     this.profilesData = [];
   }
   verif:true;
@@ -27,9 +25,9 @@ export class PasswordPage implements OnInit {
   id: number;
   ngOnInit() {
     this.passwordForm = this.formBuilder.group({
-      password: ['', Validators.compose([Validators.required])],
-      newPassword: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
-      confirmpassword:['',[Validators.required,this.equalto('newPassword')]]
+     
+      password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
+      Confirmpassword:['',[Validators.required,this.equalto('password')]]
     })
   }
 
@@ -52,13 +50,13 @@ export class PasswordPage implements OnInit {
     //get item details using id
     this.apiService.getItem(this.id).subscribe(response => {
       console.log(response);
-      this.user = response;
-      console.log(this.user)
+      this.profilesData = response;
+      console.log(this.profilesData)
     })
   }
 
    verifyPassword(value:string) {
-     if(this.user.password === value)
+     if(this.profilesData.password === value)
      {
     console.log("false");
      }
@@ -71,9 +69,9 @@ export class PasswordPage implements OnInit {
   update() {
     let url="http://localhost:3000/users";
     console.log(this.passwordForm.value);
-    this.http.patch(url+"/" +this.id ,this.passwordForm.value.confirmpassword,this.passwordForm.value.newPassword).toPromise().then((data:any)=>{
+    this.http.patch(url+"/"+this.id ,this.passwordForm.value).toPromise().then((data:any)=>{
       console.log(data)
-      // this.router.navigate(['/home']);
+       this.router.navigate(['/settings']);
 
     });
   }
@@ -81,8 +79,8 @@ export class PasswordPage implements OnInit {
   onSubmit() {
     // To save the passwordForm values
     // console.log('this.passwordForm.value', this.passwordForm.value);
-    console.log('input',this.passwordForm.value.password);
-      console.log('db',this.user.password);
+    console.log('input',this.passwordForm.value.oldpassword);
+      console.log('db',this.profilesData.password);
 
   }
 }
