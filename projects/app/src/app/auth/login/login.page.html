@@ -1,17 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button defaultHref="" style="color: white;"></ion-back-button>
-      </ion-buttons>
-      <ion-title class="ion-text-center">
-        <h1><ion-icon name="log-in-outline"></ion-icon> Login</h1>
-      </ion-title>
-  </ion-toolbar>
-</ion-header>
-
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/settings" style="color: white;"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">
+            <h1 class="centered-title">
+                <ion-icon name="log-in-outline"></ion-icon> Login</h1>
+        </ion-title>
+    </ion-toolbar>
+  </ion-header>
   <ion-content>
     <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
-      <div class="form-group">
+      <div class="form-group margin-form">
     <ion-list>
     <ion-item >
       <ion-label [ngClass]="{ 'has-error':  isSubmitted  && formControls.phone.errors }" position="floating">Phone<ion-text color="danger">*</ion-text></ion-label>

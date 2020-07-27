@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { Storage } from  '@ionic/storage';
 
 @Component({
@@ -31,13 +33,9 @@ export class AppComponent implements OnInit {
       title: 'Settings',
       url: '/settings',
       icon: 'settings'
-    },
-    {
-      title: 'Logout',
-      url: '/folder/logout',
-      icon: 'exit'
     }
   ];
+
   firstname : string;
   lastname : string;
   town: string;
@@ -47,6 +45,8 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    public alertController: AlertController,
+    private router: Router,
     private storage: Storage
   ) {
     this.initializeApp();
@@ -85,5 +85,31 @@ export class AppComponent implements OnInit {
          this.country = valeur;
           });
 
+  }
+  async logout() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Logout ?',
+      message: 'You are logging out',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            console.log('Confirm Okay');
+            localStorage.clear();
+            this.router.navigate(['signup']);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }
