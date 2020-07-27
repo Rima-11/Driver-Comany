@@ -51,12 +51,14 @@ createDirectionForm() {
      this.destinationControl = new FormControl();
 
   }
-  ngOnInit() {
+  ionViewWillEnter() {
     console.log(this.storage);
       this.storage.get("firstname").then((valeur ) => {
-      console.log(valeur);
-       this.firstname = valeur;
+      this.firstname = valeur;
     });
+  }
+
+  ngOnInit() {
     this.createDirectionForm();
      this.loadMap() ;
     //load Places Autocomplete

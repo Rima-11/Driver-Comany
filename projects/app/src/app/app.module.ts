@@ -22,7 +22,12 @@ import { AgmCoreModule } from '@agm/core';
     AppRoutingModule,
     HttpClientModule,
     AuthModule,
-    IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot(
+      {
+        name: '__local_driver_db',
+        driverOrder: [ 'localstorage','indexeddb', 'sqlite', 'websql']
+      }
+    ),
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
