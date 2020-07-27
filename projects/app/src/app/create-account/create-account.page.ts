@@ -3,7 +3,6 @@ import {HttpClient} from'@angular/common/http';
 import { FormBuilder } from '@angular/forms'
 import {Validators,ValidatorFn, AbstractControl} from '@angular/forms';
 import { Router } from '@angular/router';
-import { isArray } from 'util';
 
 @Component({
   selector: 'app-create-account',
@@ -45,7 +44,7 @@ export class CreateAccountPage implements OnInit {
     country:['',Validators.compose([
       Validators.required])],
     password: ['', Validators.compose([Validators.required])],
-    Confirmpassword:['',[Validators.required,this.equalto('password')]]
+    confirmPassword:['',[Validators.required,this.equalto('password')]]
     // person:['',]
 });
   }

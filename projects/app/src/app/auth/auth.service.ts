@@ -16,6 +16,7 @@ export class AuthService {
   constructor(private  httpClient:  HttpClient, private storage: Storage) { }
 
   login(user: User): Observable<AuthResponse> {
+    console.log(user);
     return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/auth/login`, user).pipe(
       tap(async (res: AuthResponse) => {
         console.log(res);
@@ -27,6 +28,10 @@ console.log(this.storage);
           await this.storage.set("expires_in", res.user.expires_in);
           await this.storage.set("remember" , res.user.remember);
           await this.storage.set("phone" , res.user.phone);
+          await this.storage.set("firstname" , res.user.firstname);
+          await this.storage.set("lastname" , res.user.lastname);
+          await this.storage.set("town" , res.user.town);
+          await this.storage.set("country" , res.user.country);
           this.authSubject.next(true);}
 
       })

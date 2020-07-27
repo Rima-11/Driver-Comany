@@ -13,8 +13,8 @@ server.use(jsonServer.defaults());
 
 const SECRET_KEY = '123456789';
 
-const expiresIn = '1h';
-
+const expiresIn = '1h'
+var userConnected ;
 // Create a token from a payload
 function createToken(payload){
   return jwt.sign(payload, SECRET_KEY, {expiresIn})
@@ -27,11 +27,18 @@ function verifyToken(token){
 
 // Check if the user exists in database
 function isAuthenticated({phone, password}){
-  console.log(userdb.users);
-  console.log(phone, password);
-  return userdb.users.findIndex(user =>  user.phone === phone && user.password === password) !== -1
-}
+  const response =  userdb.users.findIndex(user => user.phone === phone && user.password === password) !== -1 ;
+  console.log(response);
+  if (response){
 
+     console.log(response);
+     userConnected = userdb.users.find(user => user.phone === phone && user.password === password);
+     console.log(userConnected);
+
+
+  }
+ return response;
+ }
 // Register New User
 server.post('/auth/register', (req, res) => {
   console.log("register endpoint called; request body:");
@@ -88,11 +95,22 @@ server.post('/auth/login', (req, res) => {
     res.status(status).json({status, message})
     return
   }
+    const playload = {password: password, phone: phone, remember: remember, firstname: userConnected.firstname,
+      lastname: userConnected.lastname,
+      town: userConnected.town,
+      country: userConnected.country,
+      id: userConnected.id};
 
-    const access_token = createToken({phone, password})
+    const access_token = createToken({playload});
+
     console.log("Access Token:" + access_token);
     console.log("remember:" + remember);
-    const user = {access_token: access_token, phone: phone, remember: remember};
+
+     user = {access_token: access_token, phone: phone, remember: remember, firstname: userConnected.firstname,
+      lastname: userConnected.lastname,
+      town: userConnected.town,
+      country: userConnected.country,
+      id: userConnected.id};
 
     res.status(200).json({ user })
 
@@ -124,9 +142,9 @@ server.use(/^(?!\/auth).*$/,  (req, res, next) => {
 })
 server.use(router)
 
-server.listen(3001, () => {
+  server.listen(3001, () => {
   console.log('Run Auth API Server')
-})
+  })
 
 
 

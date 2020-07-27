@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FormControl} from "@angular/forms";
 import { NavController } from '@ionic/angular';
 import { MapsAPILoader, AgmMap } from '@agm/core';
+import { Storage } from  '@ionic/storage';
 
 declare var google;
 
@@ -34,6 +35,7 @@ public searchElementRef: ElementRef;
 @ViewChild('destination',{static:false})
 public destinationElementRef: ElementRef;
 
+firstname : string;
 
 createDirectionForm() {
   this.directionForm = this.fb.group({
@@ -42,7 +44,7 @@ createDirectionForm() {
   });
 }
     constructor(public geolocation: Geolocation, private fb: FormBuilder,public navCtrl: NavController, private mapsAPILoader: MapsAPILoader,
-      private ngZone: NgZone )
+      private ngZone: NgZone, private storage: Storage )
        {
       //create search and destination FormControl
      this.searchControl = new FormControl();
@@ -50,6 +52,11 @@ createDirectionForm() {
 
   }
   ngOnInit() {
+    console.log(this.storage);
+      this.storage.get("firstname").then((valeur ) => {
+      console.log(valeur);
+       this.firstname = valeur;
+    });
     this.createDirectionForm();
      this.loadMap() ;
     //load Places Autocomplete
