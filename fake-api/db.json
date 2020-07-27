@@ -1,0 +1,40 @@
+{
+  "mobilemoneys": [],
+  "paypals": [
+    {
+      "email": "andrew@gmail.com",
+      "id": 1
+    }
+  ],
+  "creditCards": [],
+  "users": [
+    {
+      "firstname": "sabrine",
+      "lastname": "ben",
+      "email": "sabrine@gg.g",
+      "phone": "24612088",
+      "accountType": "Client",
+      "code": "123",
+      "zip": "6014",
+      "town": "gabes",
+      "country": "tunis",
+      "password": "Sa",
+      "id": 1,
+      "confirmPassword": "Sa"
+    },
+    {
+      "firstname": "akim",
+      "lastname": "kabind",
+      "email": "a@gmail",
+      "phone": "123456789",
+      "accountType": "Client",
+      "code": "123",
+      "zip": "75",
+      "town": "Paris",
+      "country": "France",
+      "password": "Pk",
+      "id": 2,
+      "confirmPassword": "Pk"
+    }
+  ]
+}

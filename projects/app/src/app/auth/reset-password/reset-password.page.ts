@@ -33,9 +33,9 @@ export class ResetPasswordPage implements OnInit {
  userData: any = {};
   ngOnInit() {
     this.slideOneForm = this.formBuilder.group({
-      phone:['',Validators.compose([Validators.required,Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')])],
-      code:['',Validators.compose([ Validators.required,Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')])],
-
+      phone:['',Validators.compose([Validators.required])],
+      code:['',Validators.compose([
+        Validators.required])],
       password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
       confirmPassword:['',[Validators.required,this.equalto('password')]]
     });

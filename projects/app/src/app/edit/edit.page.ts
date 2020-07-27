@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Profile } from '../models/profile';
 import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.page.html',

@@ -63,6 +63,8 @@ export class ApiService {
  // Update item by id
   updateItem(id, item): Observable<Profile> {
     console.log(id,item);
+    console.log(this.base_path);
+
     return this.http
       .put<Profile>(`${this.base_path}/users/${id}`, item , this.httpOptions)
       .pipe(

@@ -4,4 +4,6 @@ export class Profile {
     lastname: string;
     email: string;
     phone: string;
+    password:string;
+    confirmpassword:string;
 }
