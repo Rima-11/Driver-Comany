@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup, ValidatorFn, AbstractControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment'
 
 @Component({
   selector: 'app-password',
@@ -11,8 +12,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./password.page.scss'],
 })
 
-
 export class PasswordPage implements OnInit {
+  private base_path = `${environment.API_ENTRYPOINT}`;
   profilesData: any;
   password:string;
   passwordForm: FormGroup;
@@ -67,9 +68,8 @@ export class PasswordPage implements OnInit {
    }
 
   update() {
-    let url="http://localhost:3000/users";
     console.log(this.passwordForm.value);
-    this.http.patch(url+"/"+this.id ,this.passwordForm.value).toPromise().then((data:any)=>{
+    this.http.patch(`${this.base_path}/users/${this.id }`, this.passwordForm.value).toPromise().then((data:any)=>{
       console.log(data)
        this.router.navigate(['/settings']);
 
