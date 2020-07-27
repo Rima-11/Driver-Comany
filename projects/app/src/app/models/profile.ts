@@ -5,5 +5,5 @@ export class Profile {
     email: string;
     phone: string;
     password:string;
-    confirmpassword:string;
+    Confirmpassword:string;
 }
