@@ -14,7 +14,6 @@ import { HttpClient } from '@angular/common/http';
 
 export class PasswordPage implements OnInit {
   profilesData: any;
-  password:string;
   passwordForm: FormGroup;
   user: Profile;
   errorMessage="";
@@ -29,7 +28,7 @@ export class PasswordPage implements OnInit {
     this.passwordForm = this.formBuilder.group({
       oldpassword: ['',[Validators.required]],
       password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
-      Confirmpassword:['',[Validators.required,this.equalto('password')]]
+      confirmPassword:['',[Validators.required,this.equalto('password')]]
     })
   }
 
@@ -62,10 +61,10 @@ export class PasswordPage implements OnInit {
      if(this.user.password === this.passwordForm.value.oldpassword)
      {
       console.log('yes');
+      this.errorMessage="";
      }
      else{
       this.errorMessage = "not the same password";
-      console.log(this.errorMessage);
       console.log(this.passwordForm.value.oldpassword)
      }
    }
