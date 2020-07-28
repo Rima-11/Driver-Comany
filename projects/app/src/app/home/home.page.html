@@ -1,21 +1,28 @@
-
-<ion-content>
+  <ion-content>
   <h1>  <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
   </ion-buttons></h1>
   <div id="map_canvas">  </div>
-     <ion-text class="ion-text-center">  <h4 >  Good morning, Wafa</h4>
+     <ion-text class="ion-text-center">  <h4 >  Good morning, {{firstname}}</h4>
       </ion-text>
-      <ion-list>
-                <ion-item>
-                  <ion-label position="floating">Where are you? <ion-text color="danger">*</ion-text></ion-label>
-                  <ion-input required type="text" oninput="handleplaceValue(event)"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label position="floating">Where are you going? <ion-text color="danger">*</ion-text></ion-label>
-                  <ion-input required type="text" oninput="handleplaceValue(event)"></ion-input>
-                </ion-item>
-             </ion-list>
-             <ion-button expand="block">SEARCH</ion-button>
+    <form [formGroup]="directionForm" (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
 
+      <ion-list>
+           <div>  <ion-label position="floating">Where are you? <ion-text color="danger">*</ion-text></ion-label> </div>
+               <input placeholder="" required type="text" id="native-input sc-ion-input-ios"
+                   (keydown.enter)="$event.preventDefault()" formControlName="source"
+                    autocorrect="off" autocapitalize="off" spellcheck="off"  #search >
+
+           <div> <ion-label position="floating">Where are you going? <ion-text color="danger">*</ion-text></ion-label> </div>
+                 <!-- <ion-input required type="text"  oninput="handleplaceValue(event)"formControlName="destination"></ion-input> -->
+              <input placeholder="" required type="text" class="native-input sc-ion-input-ios"
+                 (keydown.enter)="$event.preventDefault()" formControlName="destination"
+                  autocorrect="off" autocapitalize="off" spellcheck="off"  #destination >
+      </ion-list>
+              <ion-button expand="block"type="submit" [disabled]="directionForm.invalid">SEARCH</ion-button>
+
+   </form>
 </ion-content>
+
+
+

@@ -4,7 +4,7 @@
           <ion-back-button defaultHref="/signup" style="color: white;"></ion-back-button>
       </ion-buttons>
       <ion-title text-center>
-          <h1 class="centered-title ion-text-center">
+          <h1 class="centered-title">
               <ion-icon name="create"></ion-icon>Singn up </h1>
       </ion-title>
   </ion-toolbar>
@@ -142,10 +142,10 @@
               </span>
               <ion-item>
                 <ion-label position="floating" style="color:#382574;">Confirm Password</ion-label>
-                <ion-input [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)" formControlName="Confirmpassword" type="password"></ion-input>
+                <ion-input [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)" formControlName="confirmPassword" type="password"></ion-input>
               </ion-item>
-              <ion-item no-lines *ngIf="( slideOneForm.get('Confirmpassword').hasError('equalTo') || slideOneForm.get('Confirmpassword').hasError('required') ) && slideOneForm.get('Confirmpassword').touched">         
-                <p class="error" *ngIf="slideOneForm.get('Confirmpassword').hasError('equalTo') && slideOneForm.get('Confirmpassword').touched">
+              <ion-item no-lines *ngIf="( slideOneForm.get('confirmPassword').hasError('equalTo') || slideOneForm.get('confirmPassword').hasError('required') ) && slideOneForm.get('confirmPassword').touched">         
+                <p class="error" *ngIf="slideOneForm.get('confirmPassword').hasError('equalTo') && slideOneForm.get('confirmPassword').touched">
                 Confirm Password
                 </p>
               </ion-item>

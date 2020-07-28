@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Storage } from  '@ionic/storage';
 
 @Component({
   selector: 'app-root',
@@ -31,18 +33,21 @@ export class AppComponent implements OnInit {
       title: 'Settings',
       url: '/settings',
       icon: 'settings'
-    },
-    {
-      title: 'Logout',
-      url: '/folder/logout',
-      icon: 'exit'
     }
   ];
-  
+
+  firstname : string;
+  lastname : string;
+  town: string;
+  country: string;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public alertController: AlertController,
+    private router: Router,
+    private storage: Storage
   ) {
     this.initializeApp();
   }
@@ -59,5 +64,52 @@ export class AppComponent implements OnInit {
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+    console.log(this.storage);
+    this.storage.get("firstname").then((valeur ) => {
+    console.log(valeur);
+     this.firstname = valeur;
+      });
+      console.log(this.storage);
+      this.storage.get("lastname").then((valeur ) => {
+      console.log(valeur);
+       this.lastname = valeur;
+        });
+        console.log(this.storage);
+        this.storage.get("town").then((valeur ) => {
+        console.log(valeur);
+         this.town = valeur;
+          });
+        console.log(this.storage);
+        this.storage.get("country").then((valeur ) => {
+        console.log(valeur);
+         this.country = valeur;
+          });
+
+  }
+  async logout() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Logout ?',
+      message: 'You are logging out',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            console.log('Confirm Okay');
+            localStorage.clear();
+            this.router.navigate(['signup']);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

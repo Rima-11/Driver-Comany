@@ -11,10 +11,10 @@
                             </ion-avatar>
 
                             <ion-col id="header-menu">
-                                <ion-list-header>Hamza</ion-list-header>
-                                <ion-list-header>BADROUCHI</ion-list-header>
+                                <ion-list-header>{{firstname}}</ion-list-header>
+                                <ion-list-header>{{lastname}}</ion-list-header>
                                 <ion-row>
-                                    <ion-note>Tunis,Tunisie</ion-note>
+                                    <ion-note>{{town}},{{country}}</ion-note>
 
                                 </ion-row>
                             </ion-col>
@@ -27,6 +27,13 @@
                         <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
                             <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
                             <ion-label>{{ p.title }}</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle>
+                        <ion-item (click)="logout()">
+                            <ion-icon slot="start" name="exit"></ion-icon>
+                            <ion-label>Logout</ion-label>
                         </ion-item>
                     </ion-menu-toggle>
                 </ion-list>

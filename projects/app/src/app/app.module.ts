@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from  './auth/auth.module';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { IonicStorageModule } from '@ionic/storage';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,13 +22,23 @@ import { IonicStorageModule } from '@ionic/storage';
     AppRoutingModule,
     HttpClientModule,
     AuthModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(
+      {
+        name: '__local_driver_db',
+        driverOrder: [ 'localstorage','indexeddb', 'sqlite', 'websql']
+      }
+    ),
+    FormsModule,
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCgUWjd50DeZOIrzNfFyuoNs12aquKMb-U',
+      libraries: ['places']
+    })
   ],
   providers: [
     StatusBar,
     Geolocation,
     SplashScreen,
-
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

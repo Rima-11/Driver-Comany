@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms'
 import {Validators,ValidatorFn, AbstractControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { isArray } from 'util';
+import { environment } from '../../environments/environment'
 
 @Component({
   selector: 'app-create-account',
@@ -11,6 +12,8 @@ import { isArray } from 'util';
   styleUrls: ['./create-account.page.scss'],
 })
 export class CreateAccountPage implements OnInit {
+  private base_path = `${environment.API_ENTRYPOINT}`;
+
   @ViewChild('signupSlider') signupSlider;
   submitAttempt: boolean;
   slideOneForm: any;
@@ -45,7 +48,7 @@ export class CreateAccountPage implements OnInit {
     country:['',Validators.compose([
       Validators.required])],
     password: ['', Validators.compose([Validators.required])],
-    Confirmpassword:['',[Validators.required,this.equalto('password')]]
+    confirmPassword:['',[Validators.required,this.equalto('password')]]
     // person:['',]
 });
   }
@@ -90,8 +93,7 @@ prev(){
         this.signupSlider.slideTo(0);
     }
     else {
-       let url="http://localhost:3000/users";
-  this.http.post(url,this.slideOneForm.value).toPromise().then((data:any)=>{
+  this.http.post(`${this.base_path}/users/`,this.slideOneForm.value).toPromise().then((data:any)=>{
     this.router.navigate(['/home']);
   });
   //console.log(this.slideOneForm.value.phone);
@@ -102,9 +104,8 @@ prev(){
 
 verifyPhone()
 {
-  let url="http://localhost:3000/users";
   const phone = this.slideOneForm.value.phone;
- this.http.get(url + "?phone=" + phone)
+ this.http.get(`${this.base_path}/users/?phone=${phone}`)
   .subscribe((data:Array<any>) => {
   if (data.length)
   {
