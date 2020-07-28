@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { Storage } from  '@ionic/storage';
+import { Profile } from '../models/profile';
 
 @Component({
   selector: 'app-settings',
@@ -9,40 +10,29 @@ import { Storage } from  '@ionic/storage';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
-
-  profilesData: any;
-  firstname : string;
-  lastname : string;
-  phone : string;
-  email : string;
+  user: Profile;
+   
   constructor(
     public apiService: ApiService, public activatedRoute: ActivatedRoute,private storage: Storage
   ) {
-    this.profilesData = [];
+     this.user = new Profile;
   }
 
-  ngOnInit() {
-        console.log(this.storage);
-    this.storage.get("firstname").then((valeur ) => {
-    console.log(valeur);
-     this.firstname = valeur;
-      });
-        this.storage.get("lastname").then((valeur ) => {
-    console.log(valeur);
-     this.lastname = valeur;
-      });
-        this.storage.get("phone").then((valeur ) => {
-    console.log(valeur);
-     this.phone = valeur;
-      });
-        this.storage.get("email").then((valeur ) => {
-    console.log(valeur);
-     this.email = valeur;
-      });
+ ngOnInit() {
+  
   }
 
   ionViewWillEnter() {
-
+    console.log(this.storage);
+    this.storage.get("id").then((valeur ) => {
+    console.log(valeur);
+   const id=parseInt(valeur)
+    this.apiService.getItem(id).subscribe(response => {
+      console.log(response);
+      this.user = response;
+      console.log(this.user)
+    })
+      }); 
   }
   
 

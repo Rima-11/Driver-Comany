@@ -99,7 +99,8 @@ server.post('/auth/login', (req, res) => {
       lastname: userConnected.lastname,
       town: userConnected.town,
       country: userConnected.country,
-      id: userConnected.id};
+      id: userConnected.id,
+      email: userConnected.email };
 
     const access_token = createToken({playload});
 
@@ -110,7 +111,8 @@ server.post('/auth/login', (req, res) => {
       lastname: userConnected.lastname,
       town: userConnected.town,
       country: userConnected.country,
-      id: userConnected.id};
+      id: userConnected.id,
+      email: userConnected.email};
 
     res.status(200).json({ user })
 

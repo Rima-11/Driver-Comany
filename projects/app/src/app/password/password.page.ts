@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup, ValidatorFn, AbstractControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
+import { Storage } from  '@ionic/storage';
 
 @Component({
   selector: 'app-password',
@@ -14,14 +15,12 @@ import { environment } from '../../environments/environment'
 
 export class PasswordPage implements OnInit {
   private base_path = `${environment.API_ENTRYPOINT}`;
-  profilesData: any;
   passwordForm: FormGroup;
   user: Profile;
   errorMessage="";
   submitAttempt: boolean;
   id: number;
-  constructor(public apiService: ApiService, public activatedRoute: ActivatedRoute,public formBuilder: FormBuilder,private http:HttpClient, private router: Router) { 
-    this.profilesData = [];
+  constructor(private storage: Storage, public apiService: ApiService, public activatedRoute: ActivatedRoute,public formBuilder: FormBuilder,private http:HttpClient, private router: Router) { 
     this.user= new Profile;
   }
  
@@ -45,20 +44,21 @@ export class PasswordPage implements OnInit {
     }
 
   ionViewWillEnter() {
-    // Used ionViewWillEnter as ngOnInit is not 
-    // called due to view persistence in Ionic
-    console.log(2)
-    this.id = this.activatedRoute.snapshot.params["id"] ?? 1;
-    //get item details using id
+   this.storage.get("id").then((valeur ) => {
+    console.log(valeur);
+    this.id=parseInt(valeur)
     this.apiService.getItem(this.id).subscribe(response => {
       console.log(response);
       this.user = response;
       console.log(this.user)
     })
-    
+      });
   }
 
    verifyPassword(value:string) {
+     console.log(this.user.password);
+      console.log(this.passwordForm.value.oldpassword);
+     
      if(this.user.password === this.passwordForm.value.oldpassword)
      {
       console.log('yes');

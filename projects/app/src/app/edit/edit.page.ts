@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Profile } from '../models/profile';
 import { ActivatedRoute } from '@angular/router';
+import { Storage } from  '@ionic/storage';
 
 @Component({
   selector: 'app-edit',
@@ -9,23 +10,24 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit.page.scss'],
 })
 export class EditPage implements OnInit {
-  profilesData: any;
-  id: number;
   user: Profile;
   
-  constructor( public apiService: ApiService, public activatedRoute: ActivatedRoute) {  
+  constructor(private storage: Storage, public apiService: ApiService, public activatedRoute: ActivatedRoute) {  
    this.user = new Profile;
   }
 
   ngOnInit() {
     console.log(2)
-    this.id = this.activatedRoute.snapshot.params["id"] ?? 1;
     //get item details using id
-    this.apiService.getItem(this.id).subscribe(response => {
+   this.storage.get("id").then((valeur ) => {
+    console.log(valeur);
+    const id=parseInt(valeur)
+    this.apiService.getItem(id).subscribe(response => {
       console.log(response);
       this.user = response;
       console.log(this.user)
     })
+      });
   }
 
   update(userUpdated : Profile) {
