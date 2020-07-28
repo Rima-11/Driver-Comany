@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { Storage } from  '@ionic/storage';
 
 @Component({
   selector: 'app-settings',
@@ -10,30 +11,39 @@ import { ActivatedRoute } from '@angular/router';
 export class SettingsPage implements OnInit {
 
   profilesData: any;
-
+  firstname : string;
+  lastname : string;
+  phone : string;
+  email : string;
   constructor(
-    public apiService: ApiService, public activatedRoute: ActivatedRoute
+    public apiService: ApiService, public activatedRoute: ActivatedRoute,private storage: Storage
   ) {
     this.profilesData = [];
   }
 
   ngOnInit() {
-    
+        console.log(this.storage);
+    this.storage.get("firstname").then((valeur ) => {
+    console.log(valeur);
+     this.firstname = valeur;
+      });
+        this.storage.get("lastname").then((valeur ) => {
+    console.log(valeur);
+     this.lastname = valeur;
+      });
+        this.storage.get("phone").then((valeur ) => {
+    console.log(valeur);
+     this.phone = valeur;
+      });
+        this.storage.get("email").then((valeur ) => {
+    console.log(valeur);
+     this.email = valeur;
+      });
   }
 
   ionViewWillEnter() {
-    // Used ionViewWillEnter as ngOnInit is not 
-    // called due to view persistence in Ionic
-    const id = this.activatedRoute.snapshot.params["id"] ?? 1;
-    this.getProfile(id);
+
   }
   
-  getProfile(id:number) {
-    //Get saved list of profile
-    this.apiService. getItem(id).subscribe(response => {
-      console.log(response);
-      this.profilesData = response;
-      
-    })
-  }
+
 }
