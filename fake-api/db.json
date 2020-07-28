@@ -13,9 +13,10 @@
       "zip": "222",
       "town": "gggg",
       "country": "gggg",
-      "password": "ff",
-      "Confirmpassword": "ff",
-      "id": 1
+      "password": "aaa",
+      "Confirmpassword": "aaa",
+      "id": 1,
+      "oldpassword": "aa"
     },
     {
       "firstname": "sab",

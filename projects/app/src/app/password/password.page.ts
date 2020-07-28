@@ -16,16 +16,18 @@ export class PasswordPage implements OnInit {
   profilesData: any;
   password:string;
   passwordForm: FormGroup;
-  constructor(public apiService: ApiService, public activatedRoute: ActivatedRoute,public formBuilder: FormBuilder,private http:HttpClient, private router: Router) { 
-    this.profilesData = [];
-  }
-  verif:true;
+  user: Profile;
   errorMessage="";
   submitAttempt: boolean;
   id: number;
+  constructor(public apiService: ApiService, public activatedRoute: ActivatedRoute,public formBuilder: FormBuilder,private http:HttpClient, private router: Router) { 
+    this.profilesData = [];
+    this.user= new Profile;
+  }
+ 
   ngOnInit() {
     this.passwordForm = this.formBuilder.group({
-     
+      oldpassword: ['',[Validators.required]],
       password: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
       Confirmpassword:['',[Validators.required,this.equalto('password')]]
     })
@@ -50,19 +52,21 @@ export class PasswordPage implements OnInit {
     //get item details using id
     this.apiService.getItem(this.id).subscribe(response => {
       console.log(response);
-      this.profilesData = response;
-      console.log(this.profilesData)
+      this.user = response;
+      console.log(this.user)
     })
+    
   }
 
    verifyPassword(value:string) {
-     if(this.profilesData.password === value)
+     if(this.user.password === this.passwordForm.value.oldpassword)
      {
-    console.log("false");
+      console.log('yes');
      }
      else{
       this.errorMessage = "not the same password";
-       console.log(this.errorMessage);
+      console.log(this.errorMessage);
+      console.log(this.passwordForm.value.oldpassword)
      }
    }
 
@@ -80,7 +84,7 @@ export class PasswordPage implements OnInit {
     // To save the passwordForm values
     // console.log('this.passwordForm.value', this.passwordForm.value);
     console.log('input',this.passwordForm.value.oldpassword);
-      console.log('db',this.profilesData.password);
+      console.log('db',this.user.password);
 
   }
 }
