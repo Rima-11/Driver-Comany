@@ -3,6 +3,7 @@ import {HttpClient} from'@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import {Validators,ValidatorFn, AbstractControl} from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment'
 
 @Component({
   selector: 'app-reset-password',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./reset-password.page.scss'],
 })
 export class ResetPasswordPage implements OnInit {
+  private base_path = `${environment.API_ENTRYPOINT}`;
+
   @ViewChild('resetSlider') resetSlider;
   submitAttempt: boolean;
   slideOneForm: any;
@@ -77,9 +80,8 @@ prev(){
       this.resetSlider.slideTo(0);
   }
   else {
-    let url="http://localhost:3000/users";
     console.log(this.slideOneForm.value);
-    this.http.put(url + "/" + this.id ,this.slideOneForm.value).toPromise().then((data:any)=>{
+    this.http.put(`${this.base_path}/users/${this.id }`,this.slideOneForm.value).toPromise().then((data:any)=>{
 
       this.router.navigate(['/home']);
 
@@ -90,9 +92,8 @@ prev(){
 
 verifyPhone()
 {
-let url="http://localhost:3000/users";
 const phone = this.slideOneForm.value.phone;
-this.http.get(url + "?phone=" + phone)
+this.http.get(`${this.base_path}/users/?phone=${phone}`)
 .subscribe((data:Array<any>) => {
 if (data.length)
 {
