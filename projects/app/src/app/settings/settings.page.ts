@@ -11,7 +11,10 @@ import { Storage } from  '@ionic/storage';
 export class SettingsPage implements OnInit {
 
   profilesData: any;
-
+  firstname : string;
+  lastname : string;
+  phone : string;
+  email : string;
   constructor(
     public apiService: ApiService, public activatedRoute: ActivatedRoute,private storage: Storage
   ) {
