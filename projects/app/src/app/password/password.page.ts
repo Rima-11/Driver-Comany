@@ -6,6 +6,7 @@ import { FormBuilder, Validators, FormGroup, ValidatorFn, AbstractControl } from
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
 import { Storage } from  '@ionic/storage';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-password',
@@ -20,7 +21,7 @@ export class PasswordPage implements OnInit {
   errorMessage="";
   submitAttempt: boolean;
   id: number;
-  constructor(private storage: Storage, public apiService: ApiService, public activatedRoute: ActivatedRoute,public formBuilder: FormBuilder,private http:HttpClient, private router: Router) { 
+  constructor(public toastController: ToastController, private storage: Storage, public apiService: ApiService, public activatedRoute: ActivatedRoute,public formBuilder: FormBuilder,private http:HttpClient, private router: Router) { 
     this.user= new Profile;
   }
  
@@ -65,7 +66,7 @@ export class PasswordPage implements OnInit {
       this.errorMessage="";
      }
      else{
-      this.errorMessage = "not the same password";
+      this.errorMessage = "Not the same password";
       console.log(this.passwordForm.value.oldpassword)
      }
    }
@@ -77,6 +78,14 @@ export class PasswordPage implements OnInit {
        this.router.navigate(['/settings']);
 
     });
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Your password have been saved.',
+      duration: 2000
+    });
+    toast.present();
   }
 
   onSubmit() {
