@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Profile } from '../models/profile';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Storage } from  '@ionic/storage';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit',
@@ -11,8 +12,8 @@ import { Storage } from  '@ionic/storage';
 })
 export class EditPage implements OnInit {
   user: Profile;
-  
-  constructor(private storage: Storage, public apiService: ApiService, public activatedRoute: ActivatedRoute) {  
+
+  constructor( private router: Router, public toastController: ToastController, private storage: Storage, public apiService: ApiService, public activatedRoute: ActivatedRoute) {  
    this.user = new Profile;
   }
 
@@ -34,7 +35,18 @@ export class EditPage implements OnInit {
     console.log(userUpdated)
     //Update item by taking id and updated data object
     this.apiService.updateItem(userUpdated.id, userUpdated).subscribe(data => {
-     console.log(data)
+     console.log(data);
+     this.router.navigate(['/settings']);
     })
   }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Your information have been saved.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+    
 }
