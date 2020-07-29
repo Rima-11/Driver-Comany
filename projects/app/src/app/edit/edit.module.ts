@@ -6,7 +6,6 @@ import { EditPageRoutingModule } from './edit-routing.module';
 import { EditPage } from './edit.page';
 
 
-
 @NgModule({
   imports: [
     CommonModule,

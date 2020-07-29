@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { Storage } from  '@ionic/storage';
+import { Profile } from '../models/profile';
 
 @Component({
   selector: 'app-settings',
@@ -8,32 +10,30 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
-
-  profilesData: any;
-
+  user: Profile;
+   
   constructor(
-    public apiService: ApiService, public activatedRoute: ActivatedRoute
+    public apiService: ApiService, public activatedRoute: ActivatedRoute,private storage: Storage
   ) {
-    this.profilesData = [];
+     this.user = new Profile;
   }
 
-  ngOnInit() {
-    
+ ngOnInit() {
+  
   }
 
   ionViewWillEnter() {
-    // Used ionViewWillEnter as ngOnInit is not 
-    // called due to view persistence in Ionic
-    const id = this.activatedRoute.snapshot.params["id"] ?? 1;
-    this.getProfile(id);
+    console.log(this.storage);
+    this.storage.get("id").then((valeur ) => {
+    console.log(valeur);
+   const id=parseInt(valeur)
+    this.apiService.getItem(id).subscribe(response => {
+      console.log(response);
+      this.user = response;
+      console.log(this.user)
+    })
+      }); 
   }
   
-  getProfile(id:number) {
-    //Get saved list of profile
-    this.apiService. getItem(id).subscribe(response => {
-      console.log(response);
-      this.profilesData = response;
-      
-    })
-  }
+
 }

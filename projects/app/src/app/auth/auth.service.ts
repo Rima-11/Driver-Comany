@@ -24,6 +24,7 @@ console.log(this.storage);
         if (res.user) {
           console.log(res.user);
           console.log(this.storage);
+          this.storage.clear();
           await this.storage.set("access_token", res.user.access_token);
           await this.storage.set("expires_in", res.user.expires_in);
           await this.storage.set("remember" , res.user.remember);
@@ -32,6 +33,8 @@ console.log(this.storage);
           await this.storage.set("lastname" , res.user.lastname);
           await this.storage.set("town" , res.user.town);
           await this.storage.set("country" , res.user.country);
+          await this.storage.set("email" , res.user.email);
+          await this.storage.set("id" , res.user.id);
           this.authSubject.next(true);}
 
       })
