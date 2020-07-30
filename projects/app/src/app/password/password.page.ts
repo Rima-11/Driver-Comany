@@ -21,6 +21,7 @@ export class PasswordPage implements OnInit {
   errorMessage="";
   submitAttempt: boolean;
   id: number;
+  pwdPattern = "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$";
   constructor(public toastController: ToastController, private storage: Storage, public apiService: ApiService, public activatedRoute: ActivatedRoute,public formBuilder: FormBuilder,private http:HttpClient, private router: Router) { 
     this.user= new Profile;
   }
@@ -71,15 +72,6 @@ export class PasswordPage implements OnInit {
      }
    }
 
-  update() {
-    console.log(this.passwordForm.value);
-    this.http.patch(`${this.base_path}/users/${this.id }`, this.passwordForm.value).toPromise().then((data:any)=>{
-      console.log(data)
-       this.router.navigate(['/settings']);
-
-    });
-  }
-
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'Your password have been saved.',
@@ -91,8 +83,14 @@ export class PasswordPage implements OnInit {
   onSubmit() {
     // To save the passwordForm values
     // console.log('this.passwordForm.value', this.passwordForm.value);
-    console.log('input',this.passwordForm.value.oldpassword);
+      console.log('input',this.passwordForm.value.oldpassword);
       console.log('db',this.user.password);
-
+      console.log(this.passwordForm.value);
+      this.http.patch(`${this.base_path}/users/${this.id }`, this.passwordForm.value).toPromise().then((data:any)=>{
+        console.log(data);
+        this.presentToast();
+         this.router.navigate(['/settings']);
+  
+      });
   }
 }
