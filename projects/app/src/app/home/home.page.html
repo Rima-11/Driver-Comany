@@ -14,11 +14,14 @@
                     autocorrect="off" autocapitalize="off" spellcheck="off"  #search >
 
            <div> <ion-label position="floating">Where are you going? <ion-text color="danger">*</ion-text></ion-label> </div>
-                 <!-- <ion-input required type="text"  oninput="handleplaceValue(event)"formControlName="destination"></ion-input> -->
+      
               <input placeholder="" required type="text" class="native-input sc-ion-input-ios"
                  (keydown.enter)="$event.preventDefault()" formControlName="destination"
                   autocorrect="off" autocapitalize="off" spellcheck="off"  #destination >
       </ion-list>
+           <div><p> {{distance?.text}}</p> </div>
+           <div><p> {{duration?.text}}</p> </div>
+
               <ion-button expand="block"type="submit" [disabled]="directionForm.invalid">SEARCH</ion-button>
 
    </form>

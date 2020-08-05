@@ -17,7 +17,8 @@ export class HomePage implements OnInit {
     map: any;
     baseUrl = 'assets/image.png/';
     directionsService = new google.maps.DirectionsService;
-directionsDisplay = new google.maps.DirectionsRenderer;
+    directionsDisplay = new google.maps.DirectionsRenderer;
+
 directionForm: FormGroup;
 public searchControl: FormControl;
 public destinationControl: FormControl;
@@ -29,6 +30,8 @@ zoom: number;
 address: string;
 private geoCoder;
 private place;
+duration: any;
+distance: any;
 
 @ViewChild('search',{static:false})
 public searchElementRef: ElementRef;
@@ -225,9 +228,17 @@ this.mapsAPILoader.load().then(() => {
       this.directionsService.route({
         origin: formValues.source,
         destination: formValues.destination,
-        travelMode: 'DRIVING'
+        travelMode:'DRIVING'
       }, (response, status) => {
         if (status === 'OK') {
+          console.log(that.directionsDisplay);
+          console.log(response);
+          console.log(response.routes[0].legs[0]);
+          that.duration = response.routes[0].legs[0].duration;
+          that.distance = response.routes[0].legs[0].distance;
+          console.log(that.distance);
+          console.log(that.duration);
+
           that.directionsDisplay.setDirections(response);
         } else {
           window.alert('Directions request failed due to ' + status);
@@ -243,5 +254,4 @@ this.mapsAPILoader.load().then(() => {
             infoWindow.open(this.map, marker);
         });
     }
-
   }
