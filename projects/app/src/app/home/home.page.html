@@ -3,8 +3,10 @@
     <ion-menu-button></ion-menu-button>
   </ion-buttons></h1>
   <div id="map_canvas">  </div>
-     <ion-text class="ion-text-center">  <h4 >  Good morning, {{firstname}}</h4>
-      </ion-text>
+  <ion-text *ngIf="distance?.text" class="ion-text-center">  <p > {{distance?.text}} {{duration?.text}} </p>
+  </ion-text>
+  <ion-text class="ion-text-center">  <h4 >  Good morning, {{firstname}}</h4>
+  </ion-text>
     <form [formGroup]="directionForm" (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
 
       <ion-list>
@@ -14,13 +16,11 @@
                     autocorrect="off" autocapitalize="off" spellcheck="off"  #search >
 
            <div> <ion-label position="floating">Where are you going? <ion-text color="danger">*</ion-text></ion-label> </div>
-      
+
               <input placeholder="" required type="text" class="native-input sc-ion-input-ios"
                  (keydown.enter)="$event.preventDefault()" formControlName="destination"
                   autocorrect="off" autocapitalize="off" spellcheck="off"  #destination >
       </ion-list>
-           <div><p> {{distance?.text}}</p> </div>
-           <div><p> {{duration?.text}}</p> </div>
 
               <ion-button expand="block"type="submit" [disabled]="directionForm.invalid">SEARCH</ion-button>
 

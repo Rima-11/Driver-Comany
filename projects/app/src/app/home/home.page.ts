@@ -118,10 +118,7 @@ this.mapsAPILoader.load().then(() => {
     });
   });
 });
-
-
-  }
-
+ }
   // Get Current Location Coordinates
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
@@ -133,14 +130,12 @@ this.mapsAPILoader.load().then(() => {
       });
     }
   }
-
   markerDragEnd($event: any) {
     console.log($event);
     this.latitude = $event.coords.lat;
     this.longitude = $event.coords.lng;
     this.getAddress(this.latitude, this.longitude);
   }
-
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
       console.log(results);
@@ -155,9 +150,7 @@ this.mapsAPILoader.load().then(() => {
       } else {
         window.alert('Geocoder failed due to: ' + status);
       }
-
     });
-
 }
     loadMap() {
         this.geolocation.getCurrentPosition().then((resp) => {
@@ -231,14 +224,9 @@ this.mapsAPILoader.load().then(() => {
         travelMode:'DRIVING'
       }, (response, status) => {
         if (status === 'OK') {
-          console.log(that.directionsDisplay);
           console.log(response);
-          console.log(response.routes[0].legs[0]);
           that.duration = response.routes[0].legs[0].duration;
           that.distance = response.routes[0].legs[0].distance;
-          console.log(that.distance);
-          console.log(that.duration);
-
           that.directionsDisplay.setDirections(response);
         } else {
           window.alert('Directions request failed due to ' + status);
