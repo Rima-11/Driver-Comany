@@ -34,6 +34,7 @@ duration: any;
 distance: any;
 price: any;
 tarif = 7;
+isSearchingResult: boolean = false;
 
 @ViewChild('search',{static:false})
 public searchElementRef: ElementRef;
@@ -231,6 +232,7 @@ this.mapsAPILoader.load().then(() => {
           that.distance = response.routes[0].legs[0].distance;
           that.price = parseInt(that.distance.text) * Number(that.tarif);
           that.directionsDisplay.setDirections(response);
+          that.isSearchingResult = true;
       } else {
           window.alert('Directions request failed due to ' + status);
         }

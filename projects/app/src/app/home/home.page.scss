@@ -5,12 +5,12 @@
  #main-content {
       border: 10px solid #382574;
 }
-ion-button {
-  margin-left:70px;
-  margin-right:70px;
-  margin-top:35px;
---background: #382574;
-}
+.ion-content-button {
+   margin-left:70px;
+   margin-right:70px;
+   margin-top:35px;
+ --background: #382574;
+ }
 ion-list {
  border-top: 3px solid #382574;
    }
@@ -36,5 +36,16 @@ ion-menu-button{
 
 p{
   font-weight: bold;
-  color:#382574;
+  color:black;
+}
+h2{
+  z-index:3;
+  position: absolute;
+  margin-top: 5px;
+}
+.ion-float-left{
+  --background: #382574;
+}
+.ion-float-right{
+  --background: #382574;
 }
