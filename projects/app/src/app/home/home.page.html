@@ -6,10 +6,6 @@
 </h1>
 <h2>
 <ion-card *ngIf="isSearchingResult">
-    <!-- <ion-text *ngIf="distance?.text" class="ion-text-center">  <p > distance:{{distance?.text}} duration:{{duration?.text}} price:{{price}}</p>
-    </ion-text> -->
-
-    <!-- <p > distance:{{distance?.text}} duration:{{duration?.text}} price:{{price}}</p> -->
     <p> Distance: {{distance?.text}} </p>
     <p> Duration:  {{duration?.text}} </p>
     <p> Price:  {{price}} </p>
@@ -19,8 +15,6 @@
   </ion-card>
 </h2>
   <div id="map_canvas">  </div>
-  <!-- <ion-text *ngIf="distance?.text" class="ion-text-center">  <p > {{distance?.text}} {{duration?.text}} {{price}}</p>
-  </ion-text> -->
   <ion-text class="ion-text-center">  <h4 >  Good morning, {{firstname}}</h4>
   </ion-text>
     <form [formGroup]="directionForm" (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
