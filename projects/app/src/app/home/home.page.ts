@@ -17,7 +17,8 @@ export class HomePage implements OnInit {
     map: any;
     baseUrl = 'assets/image.png/';
     directionsService = new google.maps.DirectionsService;
-directionsDisplay = new google.maps.DirectionsRenderer;
+    directionsDisplay = new google.maps.DirectionsRenderer;
+
 directionForm: FormGroup;
 public searchControl: FormControl;
 public destinationControl: FormControl;
@@ -29,6 +30,11 @@ zoom: number;
 address: string;
 private geoCoder;
 private place;
+duration: any;
+distance: any;
+price: any;
+tarif = 7;
+isSearchingResult: boolean = false;
 
 @ViewChild('search',{static:false})
 public searchElementRef: ElementRef;
@@ -115,10 +121,7 @@ this.mapsAPILoader.load().then(() => {
     });
   });
 });
-
-
-  }
-
+ }
   // Get Current Location Coordinates
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
@@ -130,14 +133,12 @@ this.mapsAPILoader.load().then(() => {
       });
     }
   }
-
   markerDragEnd($event: any) {
     console.log($event);
     this.latitude = $event.coords.lat;
     this.longitude = $event.coords.lng;
     this.getAddress(this.latitude, this.longitude);
   }
-
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
       console.log(results);
@@ -152,9 +153,7 @@ this.mapsAPILoader.load().then(() => {
       } else {
         window.alert('Geocoder failed due to: ' + status);
       }
-
     });
-
 }
     loadMap() {
         this.geolocation.getCurrentPosition().then((resp) => {
@@ -225,11 +224,16 @@ this.mapsAPILoader.load().then(() => {
       this.directionsService.route({
         origin: formValues.source,
         destination: formValues.destination,
-        travelMode: 'DRIVING'
+        travelMode:'DRIVING'
       }, (response, status) => {
         if (status === 'OK') {
+          console.log(response);
+          that.duration = response.routes[0].legs[0].duration;
+          that.distance = response.routes[0].legs[0].distance;
+          that.price = parseInt(that.distance.text) * Number(that.tarif);
           that.directionsDisplay.setDirections(response);
-        } else {
+          that.isSearchingResult = true;
+      } else {
           window.alert('Directions request failed due to ' + status);
         }
       });
@@ -243,5 +247,4 @@ this.mapsAPILoader.load().then(() => {
             infoWindow.open(this.map, marker);
         });
     }
-
   }
