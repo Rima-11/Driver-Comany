@@ -1,0 +1,7 @@
+{
+  "appId": "com.confledis.driver.app.company",
+  "appName": "Driver company App",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
