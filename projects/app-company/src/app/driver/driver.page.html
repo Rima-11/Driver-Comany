@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+    <ion-toolbar  color="tertiary">
+        <ion-title >Driver</ion-title>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+  </ion-toolbar>
+ 
+</ion-header>
+
+<ion-content fullscreen>
+
+
+  <ion-item>
+    <ion-label position="stacked">Name<ion-text color="danger">*</ion-text></ion-label>
+    <ion-input [(ngModel)]="data.Name" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Last Name<ion-text color="danger">*</ion-text></ion-label>
+    <ion-input [(ngModel)]="data.LastName" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Email<ion-text color="danger">*</ion-text></ion-label>
+    <ion-input [(ngModel)]="data.Email" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Phone Number<ion-text color="danger">*</ion-text></ion-label>
+    <ion-input [(ngModel)]="data.PhoneNumber" type = "number" placeholder=""></ion-input>
+  </ion-item>
+
+ 
+  
+  <ion-item>
+    <ion-button slot="end" (click)="save()" size="fullscreen"   expand="block" shape="round"  color="primary" >Save</ion-button>
+  </ion-item>
+
+ 
+  
+  
+ 
+</ion-content>

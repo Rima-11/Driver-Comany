@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>All Drivers</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <br>
+        <th scope="col">Name</th>
+        <br>
+        <th scope="col">LastName</th>
+        <br>
+        <th scope="col">Email</th>
+        <br>
+        <th scope="col">PhoneNumber</th>
+        <br>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of driversData">
+      
+        <td>{{ item.id }}</td>
+        
+        <td>{{ item.Name }}</td>
+       
+        <td>{{ item.LastName }}</td>
+       
+        <td>{{ item.Email }}</td>
+       
+        <td>{{ item.PhoneNumber }}</td>
+      
+        <td style="display: flex">
+          <ion-button slot="end" color="light" size="small" routerLink='/driver-edit/{{item.id}}'>
+            <ion-icon name="create"></ion-icon>
+          </ion-button>
+          <br>
+          <ion-button  slot="end" color="danger" size="small" (click)="delete(item)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+         
+        </td>
+      
+      </tr>
+    
+    </tbody>
+   
+      
+  
+  </table>
+  <ion-item>
+  <ion-button slot="end" (click)="save()"   expand="block" shape="round"  color="primary" (click)="show()" >Add Driver</ion-button>
+</ion-item>
+</ion-content>
