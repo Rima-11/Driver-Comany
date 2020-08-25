@@ -12,7 +12,8 @@
     "app-company": {
       "name": "app-company",
       "integrations": {
-        "capacitor": {}
+        "capacitor": {},
+        "cordova": {}
       },
       "type": "angular",
       "root": "projects/app-company"

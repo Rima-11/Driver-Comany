@@ -12,10 +12,13 @@
 
 
   <ion-item>
-    <ion-label position="stacked">Name<ion-text color="danger">*</ion-text></ion-label>
+    <ion-label position="floating" style="color:#382574;">Name</ion-label>
     <ion-input [(ngModel)]="data.Name" placeholder=""></ion-input>
   </ion-item>
-
+  <ion-item>
+    <ion-label position="floating" style="color:#382574;">New password</ion-label>
+    <ion-input type="password" formControlName="password"></ion-input>
+  </ion-item>
   <ion-item>
     <ion-label position="stacked">Last Name<ion-text color="danger">*</ion-text></ion-label>
     <ion-input [(ngModel)]="data.LastName" placeholder=""></ion-input>
@@ -33,9 +36,9 @@
 
  
   
-  <ion-item>
-    <ion-button slot="end" (click)="save()" size="fullscreen"   expand="block" shape="round"  color="primary" >Save</ion-button>
-  </ion-item>
+ 
+    <ion-button  (click)="save()"  size="fullscreen"   expand="block" shape="round"  color="primary"  >Save</ion-button>
+ 
 
  
   

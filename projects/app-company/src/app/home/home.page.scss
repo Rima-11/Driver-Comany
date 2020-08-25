@@ -1,0 +1,51 @@
+#map_canvas {
+    width: 115%;
+    height: 63%;
+ }
+#main-content {
+   border: 10px solid #382574;
+}
+.ion-content-button {
+margin-left:70px;
+margin-right:70px;
+margin-top:35px;
+--background: #382574;
+}
+ion-list {
+border-top: 3px solid #382574;
+}
+ion-label{
+  font-size: 20px;
+ color:black;
+}
+h4{
+font-size:25px;
+font-weight: bold;
+color:#382574;
+margin-top: 15px;
+}
+h1{
+z-index:4;
+position: absolute;
+margin-top:-2px;
+font-size: 35px;
+}
+ion-menu-button{
+color:#382574;
+}
+
+p{
+font-weight: bold;
+color:black;
+}
+h2{
+z-index:3;
+position: absolute;
+margin-top: 5px;
+}
+.ion-float-left{
+--background: #382574;
+}
+.ion-float-right{
+--background: #382574;
+}

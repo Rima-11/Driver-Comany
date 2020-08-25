@@ -1,0 +1,41 @@
+<ion-content>
+  <h1>  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+
+</h1>
+<h2>
+<ion-card *ngIf="isSearchingResult">
+    <p> Distance: {{distance?.text}} </p>
+    <p> Duration:  {{duration?.text}} </p>
+    <p> Price:  {{price}} </p>
+    <ion-button class="ion-float-left"  size="small" expand="block"type="submit" [disabled]="">Confirm</ion-button>
+
+    <ion-button  class="ion-float-right"  size="small" expand="block"type="submit" [disabled]="">Cancel</ion-button>
+  </ion-card>
+</h2>
+  <div id="map_canvas">  </div>
+  <ion-text class="ion-text-center">  <h4 >  Good morning, {{firstname}}</h4>
+  </ion-text>
+    <form [formGroup]="directionForm" (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
+
+      <ion-list>
+           <div>  <ion-label position="floating">Where are you? <ion-text color="danger">*</ion-text></ion-label> </div>
+               <input placeholder="" required type="text" id="native-input sc-ion-input-ios"
+                   (keydown.enter)="$event.preventDefault()" formControlName="source"
+                    autocorrect="off" autocapitalize="off" spellcheck="off"  #search >
+
+           <div> <ion-label position="floating">Where are you going? <ion-text color="danger">*</ion-text></ion-label> </div>
+
+              <input placeholder="" required type="text" class="native-input sc-ion-input-ios"
+                 (keydown.enter)="$event.preventDefault()" formControlName="destination"
+                  autocorrect="off" autocapitalize="off" spellcheck="off"  #destination >
+      </ion-list>
+
+              <ion-button  class="ion-content-button" expand="block"type="submit" [disabled]="directionForm.invalid">SEARCH</ion-button>
+
+   </form>
+</ion-content>
+
+
+
